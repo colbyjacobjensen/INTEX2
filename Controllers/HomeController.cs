@@ -28,12 +28,12 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult SupervisedAnalysis()
+        public IActionResult Supervised()
         {
             return View();
         }
 
-        public IActionResult UnsupervisedAnalysis()
+        public IActionResult Unsupervised()
         {
             return View();
         }
