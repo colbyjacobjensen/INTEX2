@@ -7,10 +7,12 @@ namespace INTEX2.Models.ViewModels
 {
 	public class BurialsViewModel
 	{
-		public BurialsViewModel()
+        public IQueryable<Burialmain> Burials { get; set; }
+        public PageInfo PageInfo { get; set; }
+
+        public BurialsViewModel()
 		{
-			public IQueryable<Burialmain> Burials { get; set; }
-			public PageInfo PageInfo { get; set; }
+
 		}
 	}
 }
