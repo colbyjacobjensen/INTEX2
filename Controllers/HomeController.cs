@@ -6,11 +6,11 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private BuffaloDbContext context { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController (BuffaloDbContext temp)
         {
-            _logger = logger;
+            context = temp;
         }
 
         public IActionResult Index()
@@ -25,6 +25,8 @@ namespace INTEX2.Controllers
 
         public IActionResult BurialList()
         {
+            var data = context.Burialmains.ToList();
+
             return View();
         }
 
