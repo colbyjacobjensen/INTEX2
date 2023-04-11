@@ -6,11 +6,11 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
-        private BuffaloDbContext context { get; set; }
+        private IBurialRepository repo;
 
-        public HomeController (BuffaloDbContext temp)
+        public HomeController (IBurialRepository temp)
         {
-            context = temp;
+            repo = temp;
         }
 
         public IActionResult Index()
@@ -25,7 +25,7 @@ namespace INTEX2.Controllers
 
         public IActionResult BurialList()
         {
-            var data = context.Burialmains.ToList();
+            var data = repo.Burials.ToList();
 
             return View();
         }

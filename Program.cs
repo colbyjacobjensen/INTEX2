@@ -21,6 +21,8 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<BuffaloDbContext>();
 
+builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
