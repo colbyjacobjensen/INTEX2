@@ -10,10 +10,6 @@ namespace INTEX2.Models.ViewModels
         public IQueryable<Burialmain> Burials { get; set; }
         public PageInfo PageInfo { get; set; }
 
-        public BurialsViewModel()
-		{
-
-		}
 	}
 }
 
