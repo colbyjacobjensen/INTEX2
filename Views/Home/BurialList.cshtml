@@ -2,10 +2,11 @@
     ViewData["Title"] = "Burial List";
 }
 
-@model List<Burialmain>
+@model BurialsViewModel
 
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
+
     @if (Model != null)
     {
         @foreach (Burialmain bm in Model)
@@ -15,3 +16,6 @@
      }
 
 </div>
+
+<div page-model="@Model.PageInfo" page-action="Index"></div>
+

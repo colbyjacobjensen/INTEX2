@@ -28,12 +28,10 @@
   <ItemGroup>
     <Folder Include="wwwroot\lib\qrcode\" />
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="Views\Shared\Components\" />
-    <Folder Include="Views\Shared\Components\Filters\" />
+    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\ViewModels\" />
-    <None Remove="Views\Shared\Components\" />
-    <None Remove="Views\Shared\Components\Filters\" />
+    <None Remove="Infrastructure\" />
   </ItemGroup>
 </Project>

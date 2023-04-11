@@ -1,6 +1,8 @@
 ﻿using INTEX2.Models;
+using INTEX2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Linq;
 
 namespace INTEX2.Controllers
 {
@@ -23,10 +25,24 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult BurialList()
+        public IActionResult BurialList(int pageNum = 1)
         {
-            var data = repo.Burials.ToList();
+            int pageSize = 5;
+            
+            var data = new BurialsViewModel
+            {
+                Burials = repo.Burials
+                .OrderBy(b => b.Id)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
 
+                PageInfo = new PageInfo
+                {
+                    TotalBurials = repo.Burials.Count(),
+                    BurialsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
             return View(data);
         }
 

@@ -11,4 +11,3 @@ namespace INTEX2.Models.ViewModels
         public PageInfo PageInfo { get; set; }
 	}
 }
-
