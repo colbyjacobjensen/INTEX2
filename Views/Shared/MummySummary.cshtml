@@ -26,13 +26,38 @@
         <li>Hair Color: @Model.Haircolor</li>
     </ul>
 
-    <form method="post" asp-page="/Purchase">
-        @*<input type="hidden" asp-for="@Model.BookId" />
-            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathandQuery()" />*@
-        <span class="card-text">
-            <button type="submit" class="btn btn-success btn-sm float-end">View More Information</button>
-        </span>
-
-    </form>
+    <div id="additional-info-@Model.Id" style="display:none">
+        <ul class="card-text p-1" style="list-style:none">
+            <li>Random Model Information: @Model.Adultsubadult</li>
+            <li>Random Model Information: @Model.Burialmaterials</li>
+            <li>Random Model Information: @Model.Dateofexcavation</li>
+            <li>Random Model Information: @Model.Dataexpertinitials</li>
+        </ul>
+    </div>
+    <span class="card-text">
+        <button id="toggle-btn-@Model.Id" onclick="toggleAdditionalInfo()" type="button" class="btn btn-success btn-sm float-end">View More Information</button>
+    </span>
 
 </div>
+
+
+<script>
+    var toggleBtn = document.getElementById('toggle-btn-@Model.Id');
+    var additionalInfo = document.getElementById('additional-info-@Model.Id');
+
+    toggleBtn.addEventListener('click', function () {
+        console.log('Button clicked!');
+        console.log(toggleBtn.id)
+        toggleAdditionalInfo();
+    });
+
+    function toggleAdditionalInfo() {
+        if (additionalInfo.style.display === 'none') {
+            additionalInfo.style.display = 'block';
+            toggleBtn.innerText = 'Hide Additional Information';
+        } else {
+            additionalInfo.style.display = 'none';
+            toggleBtn.innerText = 'View More Information';
+        }
+    }
+</script>
