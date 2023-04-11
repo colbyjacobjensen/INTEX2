@@ -56,12 +56,22 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute("typepage", "{area}/P{pageNum}", new { Controller = "Home", action = "Burial" });
-app.MapControllerRoute("Paging", "Page{pageNum}", new { controller = "Home", action = "Burials" });
-app.MapControllerRoute("type", "{area}", new { Controller = "Home", action = "Burials", pageNum = 1 });
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    name: "typepage",
+    pattern: "{burialType}/Page{pageNum}",
+    defaults: new { Controller = "Home", action = "Index" });
+
+app.MapControllerRoute(
+    name: "Paging",
+    pattern: "Page{pageNum}",
+    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+
+app.MapControllerRoute(
+    name: "type",
+    pattern: "{burialType}",
+    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+
+app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 
 app.MapRazorPages();
 
