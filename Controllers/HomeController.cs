@@ -25,20 +25,24 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult BurialList(int pageNum = 1)
+        public IActionResult BurialList(string burialType, int pageNum = 1)
         {
-            int pageSize = 5;
+            int pageSize = 10;
             
             var data = new BurialsViewModel
             {
                 Burials = repo.Burials
+                .Where(b => b.Sex == burialType || burialType == null)
                 .OrderBy(b => b.Id)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalBurials = repo.Burials.Count(),
+                    TotalBurials =
+                        (burialType == null
+                            ? repo.Burials.Count()
+                            : repo.Burials.Where(b => b.Sex == burialType).Count()),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
