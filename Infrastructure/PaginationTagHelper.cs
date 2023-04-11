@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace INTEX2.Infrastructure
 {
-    [HtmlTargetElement("div", Attributes = "page-model")]
+    [HtmlTargetElement("div", Attributes = "page-links")]
     public class PaginationTagHelper : TagHelper
     {
         private IUrlHelperFactory uhf;
@@ -25,7 +25,7 @@ namespace INTEX2.Infrastructure
         [HtmlAttributeNotBound]
         public ViewContext vc { get; set; }
       
-        public PageInfo PageBlah { get; set; }
+        public PageInfo PageLinks { get; set; }
         public string PageAction { get; set; }
         public string PageClass { get; set; }
         public bool PageClassEnabled { get; set; }
@@ -39,7 +39,7 @@ namespace INTEX2.Infrastructure
             // Build Div
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i <= PageBlah.TotalPages; i++)
+            for (int i = 1; i <= PageLinks.TotalPages; i++)
             {
                 // Make "a" Tag
                 TagBuilder tb = new TagBuilder("a");
@@ -50,7 +50,7 @@ namespace INTEX2.Infrastructure
                 if (PageClassEnabled)
                 {
                     tb.AddCssClass(PageClass);
-                    tb.AddCssClass(i == PageBlah.CurrentPage ? PageClassSelected : PageClassNormal);
+                    tb.AddCssClass(i == PageLinks.CurrentPage ? PageClassSelected : PageClassNormal);
                 }
 
                 tb.InnerHtml.Append(i.ToString());

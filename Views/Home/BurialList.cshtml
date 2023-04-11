@@ -9,7 +9,7 @@
 
     @if (Model != null)
     {
-        @foreach (Burialmain bm in Model)
+        @foreach (Burialmain bm in Model.Burials)
             {
                 <partial name="MummySummary" model="bm"></partial>
             }
@@ -17,5 +17,5 @@
 
 </div>
 
-<div page-model="@Model.PageInfo" page-action="Index"></div>
+<div page-links="@Model.PageInfo" page-action="Index"></div>
 
