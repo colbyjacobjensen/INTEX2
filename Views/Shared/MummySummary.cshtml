@@ -26,7 +26,7 @@
         <li>Hair Color: @Model.Haircolor</li>
     </ul>
 
-    <div id="additional-info-@Model.Id" style="display:none">
+    @*<div id="additional-info-@Model.Id" style="display:none">
         <ul class="card-text p-1" style="list-style:none">
             <li>Random Model Information: @Model.Adultsubadult</li>
             <li>Random Model Information: @Model.Burialmaterials</li>
@@ -36,22 +36,39 @@
     </div>
     <span class="card-text">
         <button id="toggle-btn-@Model.Id" onclick="toggleAdditionalInfo()" type="button" class="btn btn-success btn-sm float-end">View More Information</button>
-    </span>
+    </span>*@
+
+    <form method="post" asp-page="/Individual">
+
+        <input type="hidden" asp-for="@Model.Id"/>
+
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">View More Information</button>
+        </span>
+
+    </form>
+
 
 </div>
 
 
-<script>
+
+
+@*<script>
     var toggleBtn = document.getElementById('toggle-btn-@Model.Id');
     var additionalInfo = document.getElementById('additional-info-@Model.Id');
 
     toggleBtn.addEventListener('click', function () {
         console.log('Button clicked!');
-        console.log(toggleBtn.id)
+        console.log(toggleBtn-@Model.Id)
+        console.log(additionalInfo-@Model.Id)
         toggleAdditionalInfo();
     });
 
     function toggleAdditionalInfo() {
+        var toggleBtn = document.getElementById('toggle-btn-@Model.Id');
+        var additionalInfo = document.getElementById('additional-info-@Model.Id');
+
         if (additionalInfo.style.display === 'none') {
             additionalInfo.style.display = 'block';
             toggleBtn.innerText = 'Hide Additional Information';
@@ -60,4 +77,4 @@
             toggleBtn.innerText = 'View More Information';
         }
     }
-</script>
+</script>*@

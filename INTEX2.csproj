@@ -32,6 +32,7 @@
     <Folder Include="Components\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Types\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\ViewModels\" />
@@ -39,5 +40,6 @@
     <None Remove="Components\" />
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Types\" />
+    <None Remove="Pages\" />
   </ItemGroup>
 </Project>
