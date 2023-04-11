@@ -35,7 +35,7 @@ public partial class BuffaloDbContext : DbContext
 
     public virtual DbSet<Book> Books { get; set; }
 
-    public virtual DbSet<Burialmain> Burialmains { get; set; }
+    public virtual DbSet<Burialmain> Burialmain { get; set; }
 
     public virtual DbSet<BurialmainBiological> BurialmainBiologicals { get; set; }
 
