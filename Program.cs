@@ -11,7 +11,7 @@ using INTEX2.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("BuffaloDBConnection");
 
 builder.Services.AddDbContext<BuffaloDbContext>(options =>
     options.UseNpgsql(connectionString));
