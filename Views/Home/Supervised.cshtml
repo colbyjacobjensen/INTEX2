@@ -9,3 +9,21 @@
     <h1 class="display-4">Supervised Analysis</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+@*A page that allows the user to enter osteology and/or burial information to predict (based on your trained model)
+    the sex of the burial (see information re: IS 455 requirements)*@
+
+@model  BurialsViewModel
+
+<form class="text-center">
+    <label>Sex</label>
+    <select>
+        <option></option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="">Unknown</option>
+    </select>
+    <br />
+    <label>Depth (ft)</label>
+    <input/>
+</form>

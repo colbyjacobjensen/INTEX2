@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace INTEX2.Models;
 
@@ -90,6 +92,8 @@ public partial class BuffaloDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers");
+
         modelBuilder.Entity<Analysis>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("main$analysis_pkey");

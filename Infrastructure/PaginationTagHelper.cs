@@ -40,10 +40,22 @@ namespace INTEX2.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i <= PageLinks.TotalPages; i++)
+            // Limit the number of page links displayed
+            int maxPageLinks = 5;
+            int startPageLink = Math.Max(1, PageLinks.CurrentPage - (int)Math.Floor((decimal)maxPageLinks / 2));
+            int endPageLink = Math.Min(PageLinks.TotalPages, startPageLink + maxPageLinks - 1);
+
+            // Add ellipsis at the beginning if necessary
+            if (startPageLink > 1)
+            {
+                TagBuilder ellipsis = new TagBuilder("span");
+                ellipsis.InnerHtml.Append("...");
+                final.InnerHtml.AppendHtml(ellipsis);
+            }
+            
+            for (int i = startPageLink; i <= endPageLink; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
-
                 tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
 
                 // Added for button styling
@@ -55,6 +67,14 @@ namespace INTEX2.Infrastructure
 
                 tb.InnerHtml.Append(i.ToString());
                 final.InnerHtml.AppendHtml(tb);
+            }
+
+            // Add ellipsis at the end if necessary
+            if (endPageLink < PageLinks.TotalPages)
+            {
+                TagBuilder ellipsis = new TagBuilder("span");
+                ellipsis.InnerHtml.Append("...");
+                final.InnerHtml.AppendHtml(ellipsis);
             }
 
             tho.Content.AppendHtml(final.InnerHtml);

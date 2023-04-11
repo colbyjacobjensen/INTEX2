@@ -4,11 +4,11 @@
 @model IEnumerable<string>
 
 <div class="d-grid gap-2">
-    <a asp-controller="Home" asp-action="Index" asp-route-burialType="" asp-route-pageNum="1" class="btn btn-outline-secondary">Home</a>
+    <a asp-controller="Home" asp-action="BurialList" asp-route-burialType="" asp-route-pageNum="1" class="btn btn-outline-secondary">All</a>
 
     @foreach (string t in Model)
     {
-        <a asp-controller="Home" asp-action="Index" asp-route-burialType="@t" asp-route-pageNum="1"
+        <a asp-controller="Home" asp-action="BurialList" asp-route-burialType="@t" asp-route-pageNum="1"
            class="btn @(ViewBag.SelectedType == t ? "btn-primary" : "btn-outline-secondary")">@t</a>
     }
 </div>
