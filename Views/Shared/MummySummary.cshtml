@@ -1,0 +1,38 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Burialmain
+
+
+
+
+<div class="card card-outline-primary m-1 p-1 col">
+    <div class="bg-light p-1">
+        <h3>ID: @Model.Id</h3>
+    </div>
+    <ul class="card-text p-1" style="list-style:none">
+        <li>Textile Color: BLANK</li>
+        <li>Textile Structure: BLANK</li>
+        <li>Sex: @Model.Sex</li>
+        <li>Burial Depth: @Model.Depth</li>
+        <li>Estimated Stature: </li>
+        <li>Age at Death: @Model.Ageatdeath</li>
+        <li>Head Direction: @Model.Headdirection</li>
+        <li>Burial ID: @Model.Burialid</li>
+        <li>Textile Function: BLANK</li>
+        <li>Hair Color: @Model.Haircolor</li>
+    </ul>
+
+    <form method="post" asp-page="/Purchase">
+        @*<input type="hidden" asp-for="@Model.BookId" />
+            <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathandQuery()" />*@
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">View More Information</button>
+        </span>
+
+    </form>
+
+</div>

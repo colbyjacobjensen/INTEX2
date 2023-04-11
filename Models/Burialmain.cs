@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace INTEX2.Models;
 
 public partial class Burialmain
 {
+    [Key]
+    [Required]
     public long Id { get; set; }
 
     public string? Squarenorthsouth { get; set; }

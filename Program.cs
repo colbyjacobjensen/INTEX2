@@ -6,21 +6,22 @@ using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-
+using INTEX2.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContext<BuffaloDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<BuffaloDbContext>();
+
+builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
 builder.Services.AddControllersWithViews();
 
@@ -55,11 +56,13 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCookiePolicy();
-
+app.MapControllerRoute("typepage", "{area}/P{pageNum}", new { Controller = "Home", action = "Burial" });
+app.MapControllerRoute("Paging", "Page{pageNum}", new { controller = "Home", action = "Burials" });
+app.MapControllerRoute("type", "{area}", new { Controller = "Home", action = "Burials", pageNum = 1 });
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 app.MapRazorPages();
 
 app.Run();

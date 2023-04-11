@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace INTEX2.Models;
 
-public class BuffaloDbContext : DbContext
+public partial class BuffaloDbContext : DbContext
 {
     public BuffaloDbContext()
     {
@@ -35,7 +35,7 @@ public class BuffaloDbContext : DbContext
 
     public virtual DbSet<Book> Books { get; set; }
 
-    public virtual DbSet<Burialmain> Burialmains { get; set; }
+    public virtual DbSet<Burialmain> Burialmain { get; set; }
 
     public virtual DbSet<BurialmainBiological> BurialmainBiologicals { get; set; }
 
@@ -952,8 +952,8 @@ public class BuffaloDbContext : DbContext
         modelBuilder.HasSequence("system$filedocument_fileid_mxseq");
         modelBuilder.HasSequence("system$queuedtask_sequence_mxseq");
 
-        //OnModelCreatingPartial(modelBuilder);
+        OnModelCreatingPartial(modelBuilder);
     }
 
-    //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

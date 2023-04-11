@@ -9,4 +9,3 @@ namespace INTEX2.Models.ViewModels
         public int TotalPages => (int)Math.Ceiling((double)TotalBurials / BurialsPerPage);
 	}
 }
-

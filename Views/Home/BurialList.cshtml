@@ -2,22 +2,19 @@
     ViewData["Title"] = "Burial List";
 }
 
-@model List<Burialmain>
+@model BurialsViewModel
 
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
     @if (Model != null)
     {
-            @foreach (Burialmain bm in Model)
+        @foreach (Burialmain bm in Model.Burials)
             {
-                <h3>@bm.Id</h3>
-
-                <ul>
-                    <li>Sex: @bm.Sex</li>
-                    <li>Head Direction: @bm.Headdirection</li>
-                    <li>Depth: @bm.Depth</li>
-                </ul>
+                <partial name="MummySummary" model="bm"></partial>
             }
-    }
+     }
+
 </div>
+
+<div page-links="@Model.PageInfo" page-action="Index"></div>

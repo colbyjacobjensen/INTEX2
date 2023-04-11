@@ -1,16 +1,18 @@
 ﻿using INTEX2.Models;
+using INTEX2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Linq;
 
 namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private IBurialRepository repo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController (IBurialRepository temp)
         {
-            _logger = logger;
+            repo = temp;
         }
 
         public IActionResult Index()
@@ -23,9 +25,25 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult BurialList()
+        public IActionResult BurialList(int pageNum = 1)
         {
-            return View();
+            int pageSize = 5;
+            
+            var data = new BurialsViewModel
+            {
+                Burials = repo.Burials
+                .OrderBy(b => b.Id)
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalBurials = repo.Burials.Count(),
+                    BurialsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+            return View(data);
         }
 
         public IActionResult Supervised()
