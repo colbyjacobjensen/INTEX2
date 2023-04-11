@@ -27,7 +27,7 @@ namespace INTEX2.Controllers
         {
             var data = repo.Burials.ToList();
 
-            return View();
+            return View(data);
         }
 
         public IActionResult Supervised()
