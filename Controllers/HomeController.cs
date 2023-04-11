@@ -28,7 +28,7 @@ namespace INTEX2.Controllers
         public IActionResult BurialList(int pageNum = 1)
         {
             int pageSize = 5;
-
+            
             var data = new BurialsViewModel
             {
                 Burials = repo.Burials
@@ -43,16 +43,15 @@ namespace INTEX2.Controllers
                     CurrentPage = pageNum
                 }
             };
-
             return View(data);
         }
 
-        public IActionResult SupervisedAnalysis()
+        public IActionResult Supervised()
         {
             return View();
         }
 
-        public IActionResult UnsupervisedAnalysis()
+        public IActionResult Unsupervised()
         {
             return View();
         }

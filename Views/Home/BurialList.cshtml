@@ -7,15 +7,15 @@
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
 
-    @foreach (Burialmain bm in Model.Burials)
+    @if (Model != null)
     {
-        <ul>
-            <li>ID: @bm.Id</li>
-            <li>Sex: @bm.Sex</li>
-            <li>Head Direction: @bm.Headdirection</li>
-            <li>Depth: @bm.Depth</li>
-        </ul>
-    }
+        @foreach (Burialmain bm in Model)
+            {
+                <partial name="MummySummary" model="bm"></partial>
+            }
+     }
+
 </div>
 
 <div page-model="@Model.PageInfo" page-action="Index"></div>
+
