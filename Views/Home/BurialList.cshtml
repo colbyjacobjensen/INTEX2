@@ -2,12 +2,12 @@
     ViewData["Title"] = "Burial List";
 }
 
-@model List<Burialmain>
+@model BurialsViewModel
 
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
 
-    @foreach (Burialmain bm in Model)
+    @foreach (Burialmain bm in Model.Burials)
     {
         <ul>
             <li>ID: @bm.Id</li>
@@ -17,3 +17,5 @@
         </ul>
     }
 </div>
+
+<div page-model="@Model.PageInfo" page-action="Index"></div>

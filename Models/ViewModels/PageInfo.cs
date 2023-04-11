@@ -7,11 +7,5 @@ namespace INTEX2.Models.ViewModels
         public int BurialsPerPage { get; set; }
         public int CurrentPage { get; set; }
         public int TotalPages => (int)Math.Ceiling((double)TotalBurials / BurialsPerPage);
-
-        public PageInfo()
-		{
-
-        }
 	}
 }
-
