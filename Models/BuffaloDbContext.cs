@@ -567,7 +567,7 @@ public partial class BuffaloDbContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Colorid).HasColumnName("colorid");
+            entity.Property(e => e.Id).HasColumnName("colorid");
             entity.Property(e => e.Value)
                 .HasMaxLength(500)
                 .HasColumnName("value");

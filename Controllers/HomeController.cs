@@ -89,9 +89,13 @@ namespace INTEX2.Controllers
             }
         }
 
+        [HttpGet]
         public IActionResult Table()
         {
-            var records = _recordContext.Burialmain.ToList();
+            var records = _recordContext.Burialmain
+                .Include(x => x.Color)
+                .OrderBy(x => x.Id)
+                .ToList();
 
             return View(records);
         }
@@ -111,4 +115,4 @@ namespace INTEX2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-} 
+}

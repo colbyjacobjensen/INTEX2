@@ -77,4 +77,9 @@ public partial class Burialmain
     public string? Clusternumber { get; set; }
 
     public string? Shaftnumber { get; set; }
+
+    // Foreign Keys
+    public long ColorId { get; set; }
+
+    public Color Color { get; set; }
 }
