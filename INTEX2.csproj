@@ -33,6 +33,7 @@
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Types\" />
     <Folder Include="Pages\" />
+    <Folder Include="Views\UserRoleManagement\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\ViewModels\" />
@@ -41,5 +42,6 @@
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Types\" />
     <None Remove="Pages\" />
+    <None Remove="Views\UserRoleManagement\" />
   </ItemGroup>
 </Project>
