@@ -10,6 +10,8 @@ namespace INTEX2.Controllers
     {
         private IBurialRepository repo;
 
+        private BuffaloDbContext context;
+
         public HomeController (IBurialRepository temp)
         {
             repo = temp;
@@ -58,6 +60,17 @@ namespace INTEX2.Controllers
         public IActionResult Unsupervised()
         {
             return View();
+        }
+
+        public IActionResult IndividualDetail(long id = 19140298416324613)
+        {
+            var blah = new BurialsViewModel
+            {
+                Burials = repo.Burials
+                .Where(b => b.Id == id)
+            };
+
+            return View(blah);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
