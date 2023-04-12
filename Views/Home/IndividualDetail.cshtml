@@ -1,0 +1,13 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model BurialsViewModel
+
+@foreach (Burialmain bm in Model.Burials)
+{
+    <h1>Detail for @bm.Id</h1>
+    <p>@bm.Sex</p>
+}
