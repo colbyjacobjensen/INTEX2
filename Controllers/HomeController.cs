@@ -1,5 +1,6 @@
 ﻿using INTEX2.Models;
 using INTEX2.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
@@ -67,6 +68,8 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Record()
         {
+            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+
             return View();
         }
 
@@ -93,10 +96,19 @@ namespace INTEX2.Controllers
             return View(records);
         }
 
+        public IActionResult Edit (long recordid)
+        {
+            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+
+            var record = _recordContext.Burialmain.Single(x => x.Id == recordid);
+
+            return View("Record", record);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-}
+} 

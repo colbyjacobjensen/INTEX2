@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using INTEX2.Models;
+using Microsoft.AspNetCore.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,6 +71,11 @@ app.MapControllerRoute(
     name: "type",
     pattern: "{burialType}",
     defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+
+app.MapControllerRoute(
+    name: "record",
+    pattern: "{controller=Home}/{action=Edit}/{recordid}",
+    defaults: new { Controller = "Home", action = "Edit"});
 
 app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 

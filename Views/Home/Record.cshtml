@@ -4,61 +4,64 @@
 
 @model INTEX2.Models.Burialmain
 
-<div class="conteiner text-center">
+<div class="container text-center">
     <h1 class="display-4">Record Form</h1>
     <br />
 
     <form method="post">
         <div class="row">
             <label asp-for="Sex">Sex:</label>
-                <div class="col">
-                    <select asp-for="Sex">
-                        <option value="M">Male</option>
-                        <option value="F">Female</option>
-                    </select><br />
+            <div class="col">
+                <label asp-for="Id">ID:</label>
+                <input asp-for="Id" /><br />
 
-                    <label asp-for="Ageatdeath">Age at Death:</label>
-                    <input asp-for="Ageatdeath" /><br />
+                <select asp-for="Sex">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select><br />
 
-                    <label asp-for="Adultsubadult">Adult/Child:</label>
-                    <select asp-for="Adultsubadult">
-                        <option value="">Blank</option>
-                        <option value="A">Adult</option>
-                        <option value="C">Child</option>
-                    </select><br />
+                <label asp-for="Ageatdeath">Age at Death:</label>
+                <input asp-for="Ageatdeath" /><br />
 
-                    <label asp-for="Depth">Depth:</label>
-                    <input asp-for="Depth" /><br />
+                <label asp-for="Adultsubadult">Adult/Child:</label>
+                <select asp-for="Adultsubadult">
+                    <option value="">Blank</option>
+                    <option value="A">Adult</option>
+                    <option value="C">Child</option>
+                </select><br />
 
-                    <label asp-for="Northsouth">North South:</label>
-                    <select asp-for="Northsouth">
-                        <option value="">Blank</option>
-                        <option value="N">North</option>
-                        <option value="S">South</option>
-                    </select><br />
+                <label asp-for="Depth">Depth:</label>
+                <input asp-for="Depth" /><br />
 
-                    <label asp-for="Eastwest">East West:</label>
-                    <select asp-for="Eastwest">
-                        <option value="">Blank</option>
-                        <option value="E">East</option>
-                        <option value="W">West</option>
-                    </select><br />
+                <label asp-for="Northsouth">North South:</label>
+                <select asp-for="Northsouth">
+                    <option value="">Blank</option>
+                    <option value="N">North</option>
+                    <option value="S">South</option>
+                </select><br />
 
-                    <label asp-for="Headdirection">Head Direction:</label>
-                    <input asp-for="Headdirection" /><br />
+                <label asp-for="Eastwest">East West:</label>
+                <select asp-for="Eastwest">
+                    <option value="">Blank</option>
+                    <option value="E">East</option>
+                    <option value="W">West</option>
+                </select><br />
 
-                    <label asp-for="Squarenorthsouth">Square North South:</label>
-                    <input asp-for="Squarenorthsouth" /><br />
+                <label asp-for="Headdirection">Head Direction:</label>
+                <input asp-for="Headdirection" /><br />
 
-                    <label asp-for="Squareeastwest">Square East West:</label>
-                    <input asp-for="Squareeastwest" /><br />
+                <label asp-for="Squarenorthsouth">Square North South:</label>
+                <input asp-for="Squarenorthsouth" /><br />
 
-                    <label asp-for="Southtohead">South to Head:</label>
-                    <input asp-for="Southtohead" /><br />
+                <label asp-for="Squareeastwest">Square East West:</label>
+                <input asp-for="Squareeastwest" /><br />
 
-                    <label asp-for="Westtohead">West to Head:</label>
-                    <input asp-for="Westtohead" /><br />
-                </div>
+                <label asp-for="Southtohead">South to Head:</label>
+                <input asp-for="Southtohead" /><br />
+
+                <label asp-for="Westtohead">West to Head:</label>
+                <input asp-for="Westtohead" /><br />
+            </div>
                     
                 <div class="col">
                     <label asp-for="Westtofeet">West to Feet:</label>
