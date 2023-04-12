@@ -25,6 +25,8 @@ builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddRazorPages();
+
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
     // This lambda determines whether user consent for non-essential 

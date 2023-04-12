@@ -92,6 +92,17 @@ namespace INTEX2.Controllers
 
             return View(records);
         }
+        
+        public IActionResult IndividualDetail(long id)
+        {
+            var blah = new BurialsViewModel
+            {
+                Burials = repo.Burials
+                .Where(b => b.Id == id)
+            };
+
+            return View(blah);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
