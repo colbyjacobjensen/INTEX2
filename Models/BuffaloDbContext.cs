@@ -88,7 +88,7 @@ public partial class BuffaloDbContext : DbContext
     public virtual DbSet<YarnmanipulationTextile> YarnmanipulationTextiles { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Database=BuffaloDB;Username=postgres;Password=10434900");
+        => optionsBuilder.UseNpgsql("Server=burialdb.c3jrpmjwmkyz.us-east-1.rds.amazonaws.com; Port=5432; Database=burialdb; Username=postgres; Password=intex2023;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
