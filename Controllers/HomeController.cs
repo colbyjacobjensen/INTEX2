@@ -62,7 +62,7 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult IndividualDetail(long id = 19140298416324613)
+        public IActionResult IndividualDetail(long id)
         {
             var blah = new BurialsViewModel
             {
