@@ -8,6 +8,6 @@ namespace INTEX2.Models
 {
     public interface IBurialRepository
     {
-        IQueryable<Burialmain> Burials { get; }
+        IQueryable<MummyData> Burials { get; }
     }
 }

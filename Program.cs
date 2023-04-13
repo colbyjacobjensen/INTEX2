@@ -11,15 +11,15 @@ using INTEX2.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("BuffaloDBConnection");
+var connectionString = builder.Configuration.GetConnectionString("MummyDBConnection");
 
-builder.Services.AddDbContext<BuffaloDbContext>(options =>
+builder.Services.AddDbContext<mummydbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<BuffaloDbContext>();
+    .AddEntityFrameworkStores<mummydbContext>();
 
 builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
@@ -75,6 +75,10 @@ app.MapControllerRoute(
     name: "type",
     pattern: "{burialType}",
     defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
+
+app.MapControllerRoute(
+    name: "edit",
+    pattern: "{controller=Home}/{action=Index}/{recordid?}");
 
 app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 

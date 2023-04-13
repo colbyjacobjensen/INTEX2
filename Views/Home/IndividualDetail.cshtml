@@ -6,8 +6,8 @@
 
 @model BurialsViewModel
 
-@foreach (Burialmain bm in Model.Burials)
+@foreach (MummyData md in Model.Burials)
 {
-    <h1>Detail for @bm.Id</h1>
-    <p>@bm.Sex</p>
+    <h1>Detail for @md.Id</h1>
+    <p>@md.Sex</p>
 }
