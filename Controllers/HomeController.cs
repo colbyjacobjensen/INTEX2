@@ -217,7 +217,7 @@ namespace INTEX2.Controllers
         public IActionResult Table()
         {
             var records = _recordContext.MummyData
-                .OrderBy(data => data.Id)
+                .OrderBy(data => data.PkId)
                 .ToList();
 
             return View(records);
@@ -229,7 +229,7 @@ namespace INTEX2.Controllers
         {
             ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-            var record = _recordContext.MummyData.Single(data => data.Id == recordid);
+            var record = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
             return View("Record", record);
         }
@@ -249,7 +249,7 @@ namespace INTEX2.Controllers
             {
                 ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-                var record = _recordContext.MummyData.Single(data => data.Id == recordid);
+                var record = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
                 return View("Record", record);
             }
@@ -259,7 +259,7 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Delete(int recordid)
         {
-            var form = _recordContext.MummyData.Single(data => data.Id == recordid);
+            var form = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
             return View(form);
         }
