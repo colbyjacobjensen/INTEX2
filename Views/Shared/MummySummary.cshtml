@@ -23,7 +23,10 @@
         <li>Textile: @Model.TextileValue</li>
         <li>Field Notes: @Model.FieldNotes</li>
         <li>Length: @Model.Length</li>
-        <li>Photo: @Model.Photo</li>
+        <li><a class="btn btn-outline-secondary" href="@Model.Photo">Original Photo</a>
+            <br /><br />
+            <img src="@Model.Photo" height="75px"/>
+        </li>
     </ul>
 
     <form method="post" asp-controller="Home" asp-action="IndividualDetail">

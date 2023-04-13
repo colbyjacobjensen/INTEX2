@@ -9,5 +9,21 @@
 @foreach (MummyData md in Model.Burials)
 {
     <h1>Detail for @md.Id</h1>
+
+
+    <p>@md.Location</p>
+    <p>@md.HeadDirection</p>
     <p>@md.Sex</p>
+    <p>@md.HairColor</p>
+    <p>@md.BurialNumber</p>
+    <p>@md.AgeAtDeath</p>
+    <p>@md.StructureValue</p>
+    <p>@md.ColorValue</p>
+    <p>@md.TextileValue</p>
+    <p>@md.FieldNotes</p>
+    <p>@md.Length</p>
+
+
+    <img src="@md.Photo"/>
+
 }
