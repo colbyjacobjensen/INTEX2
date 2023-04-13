@@ -49,11 +49,11 @@ namespace INTEX2.Controllers
                             filterType == "Sex" && b.Sex == filterValue ||
                             //filterType == "Burial Depth" && b.Age == filterValue ||
                             //filterType == "Estimate Stature" && b.Sex == filterValue ||
-                            filterType == "Age At Death" && b.Ageatdeath == filterValue ||
-                            filterType == "Head Direction" && b.Headdirection == filterValue ||
+                            filterType == "Age At Death" && b.AgeAtDeath == filterValue ||
+                            filterType == "Head Direction" && b.HeadDirection == filterValue ||
                             //filterType == "Burial ID" && b.Burialid == filterValue ||
                             //filterType == "Textile Function" && b.Name == filterValue ||
-                            filterType == "Hair Color" && b.Haircolor == filterValue
+                            filterType == "Hair Color" && b.HairColor == filterValue
                         )
                     )
                     .OrderBy(b => b.Id)
@@ -99,17 +99,17 @@ namespace INTEX2.Controllers
 
         public IActionResult FilterBurialList()
         {
-            //ViewBag.BurialMainTextileColor = _recordContext.Burialmain.Select(x => x.Sex).Distinct().ToList();
-            //ViewBag.BurialMainTextileStructure = _recordContext.Burialmain.Select(x => x.Sex).Distinct().ToList();
-            ViewBag.BurialMainSex = _recordContext.Burialmain.Select(x => x.Sex).Distinct().ToList();
-            ViewBag.BurialMainBurialDepth = _recordContext.Burialmain.Select(x => x.Depth).Distinct().ToList();
-            //ViewBag.BurialMainEstimatedStature = _recordContext.Burialmain.Select(x => x.Sex).Distinct().ToList();
-            ViewBag.BurialMainAgeAtDeath = _recordContext.Burialmain.Select(x => x.Ageatdeath).Distinct().ToList();
-            ViewBag.BurialMainHeadDirection = _recordContext.Burialmain.Select(x => x.Headdirection).Distinct().ToList();
-            ViewBag.BurialMainBurialID = _recordContext.Burialmain.Select(x => x.Burialid).Distinct().ToList();
-            //ViewBag.BurialMainTextileFunction = _recordContext.Burialmain.Select(x => x.Sex).Distinct().ToList();
-            ViewBag.BurialMainHairColor = _recordContext.Burialmain.Select(x => x.Haircolor).Distinct().ToList();
-            ViewBag.BurialMain = _recordContext.Burialmain.Distinct().ToList();
+            ViewBag.MummyDataTextileColor = _recordContext.MummyData.Select(x => x.ColorValue).Distinct().ToList();
+            ViewBag.MummyDataTextileStructure = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
+            ViewBag.MummyDataSex = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
+            //ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.Depth).Distinct().ToList();
+            ViewBag.MummyDataEstimatedStature = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
+            ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
+            ViewBag.MummyDataHeadDirection = _recordContext.MummyData.Select(x => x.HeadDirection).Distinct().ToList();
+            ViewBag.MummyDataBurialID = _recordContext.MummyData.Select(x => x.BurialNumber).Distinct().ToList();
+            ViewBag.MummyDataTextileFunction = _recordContext.MummyData.Select(x => x.TextileValue).Distinct().ToList();
+            ViewBag.MummyDataHairColor = _recordContext.MummyData.Select(x => x.HairColor).Distinct().ToList();
+            ViewBag.MummyData = _recordContext.MummyData.Distinct().ToList();
 
             return View();
         }

@@ -34,70 +34,70 @@
                 <h4>Filter Value:</h4>
                 @*TEXTILE COLOR*@
                 <select name="filterValue" id="textileColor" style="display:none;">
-                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    @foreach (var tc in ViewBag.MummyDataTextileColor)
                     {
-                        <option value=""></option>
+                        <option value="@tc">@tc</option>
                     }
                 </select>
                 @*TEXTILE STRUCTURE*@
                 <select name="filterValue" id="textileStructure" style="display:none;">
-                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    @foreach (var ts in ViewBag.MummyDataTextileStructure)
                     {
-                        <option value=""></option>
+                        <option value="@ts">@ts</option>
                     }
                 </select>
                 @*SEX*@
                 <select name="filterValue" id="sex" style="display:none;">
-                    @foreach (var s in ViewBag.BurialMainSex)
+                    @foreach (var s in ViewBag.MummyDataSex)
                     {
                         <option value="@s">@s</option>
                     }
                 </select>
                 @*BURIAL DEPTH*@
-                <select name="filterValue" id="burialDepth" style="display:none;">
-                    @foreach (var bd in ViewBag.BurialMainBurialDepth)
+                @*<select name="filterValue" id="burialDepth" style="display:none;">
+                    @foreach (var bd in ViewBag.MummyDataBurialDepth)
                     {
                         <option value="@bd">@bd</option>
                     }
-                </select>
+                </select>*@
                 @*ESTIMATED STATURE*@
                 <select name="filterValue" id="estimatedStature" style="display:none;">
-                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    @foreach (var es in ViewBag.MummyDataEstimatedStature)
                     {
                         <option value=""></option>
                     }
                 </select>
                 @*AGE AT DEATH*@
                 <select name="filterValue" id="ageAtDeath" style="display:none;">
-                    @foreach (var age in ViewBag.BurialMainAgeAtDeath)
+                    @foreach (var age in ViewBag.MummyDataAgeAtDeath)
                     {
                         <option value="@age">@age</option>
                     }
                 </select>
                 @*HEAD DIRECTION*@
                 <select name="filterValue" id="headDirection" style="display:none;">
-                    @foreach (var head in ViewBag.BurialMainHeadDirection)
+                    @foreach (var head in ViewBag.MummyDataHeadDirection)
                     {
                         <option value="@head">@head</option>
                     }
                 </select>
                 @*BURIAL ID*@
                 <select name="filterValue" id="burialID" style="display:none;">
-                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    @foreach (var bi in ViewBag.MummyDataBurialID)
                     {
-                        <option value="@bm.Burialid">@bm.Burialid</option>
+                        <option value="@bi">@bi</option>
                     }
                 </select>
                 @*TEXTILE FUNCTION*@
                 <select name="filterValue" id="textileFunction" style="display:none;">
-                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    @foreach (var tf in ViewBag.MummyDataTextileFunction)
                     {
-                        <option value=""></option>
+                        <option value="@tf">@tf</option>
                     }
                 </select>
                 @*HAIR COLOR*@
                 <select name="filterValue" id="hairColor" style="display:none;">
-                    @foreach (var hc in ViewBag.BurialMainHairColor)
+                    @foreach (var hc in ViewBag.MummyDataHairColor)
                     {
                         <option value="@hc">@hc</option>
                     }
