@@ -31,7 +31,8 @@ namespace INTEX2.Models
         {
             modelBuilder.Entity<MummyData>(entity =>
             {
-                entity.HasNoKey();
+                modelBuilder.Entity<MummyData>()
+                    .HasKey(e => e.PkId);
 
                 entity.ToTable("mummy");
 

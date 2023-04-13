@@ -5,7 +5,7 @@
 @model MummyData
 
 <div class="text-center">
-    <h1 class="display-4">Are you sure you want to delete record @Model.Id?</h1>
+    <h1 class="display-4">Are you sure you want to delete record @Model.PkId?</h1>
 
     <!--Delete/Cancel Buttons-->
     <form method="post" asp-action="Delete">
@@ -13,6 +13,6 @@
         <a asp-controller="Home" asp-action="Table" class="btn btn-primary">Cancel</a>
 
         <!--Hidden MovieID Identifier-->
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="PkId" />
     </form>
 </div>

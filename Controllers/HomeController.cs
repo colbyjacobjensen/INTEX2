@@ -217,7 +217,7 @@ namespace INTEX2.Controllers
         public IActionResult Table()
         {
             var records = _recordContext.MummyData
-                .OrderBy(data => data.Id)
+                .OrderBy(data => data.PkId)
                 .ToList();
 
             return View(records);
@@ -229,27 +229,27 @@ namespace INTEX2.Controllers
         {
             ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-            var record = _recordContext.MummyData.Single(data => data.Id == recordid);
+            var record = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
             return View("Record", record);
         }
 
         // POST - Edit
         [HttpPost]
-        public IActionResult Edit(MummyData d, int recordid)
+        public IActionResult Edit(MummyData md, int recordid)
         {
             if (ModelState.IsValid)
             {
-                _recordContext.Update(d);
+                _recordContext.Update(md);
                 _recordContext.SaveChanges();
 
-                return RedirectToAction("Table", d);
+                return RedirectToAction("Table", md);
             }
             else
             {
                 ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-                var record = _recordContext.MummyData.Single(data => data.Id == recordid);
+                var record = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
                 return View("Record", record);
             }
@@ -259,16 +259,16 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Delete(int recordid)
         {
-            var form = _recordContext.MummyData.Single(data => data.Id == recordid);
+            var form = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
             return View(form);
         }
 
         // POST- Delete
         [HttpPost]
-        public IActionResult Delete(MummyData d)
+        public IActionResult Delete(MummyData md)
         {
-            _recordContext.MummyData.Remove(d);
+            _recordContext.MummyData.Remove(md);
             _recordContext.SaveChanges();
 
             return RedirectToAction("Table");

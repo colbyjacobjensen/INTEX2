@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace INTEX2.Models
 {
     public partial class MummyData
     {
+        [Key]
         public long PkId { get; set; }
         public long? Id { get; set; }
         public string? Location { get; set; }
