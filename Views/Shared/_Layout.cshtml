@@ -70,14 +70,14 @@
         </nav>*@
     </header>
 
-    <div class="container">
+    <div class="container"  style="padding-bottom:10%">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="position:absolute; background-color:white;">
+    <footer class="border-top footer text-muted" style="position:fixed; background-color:white;">
         <div class="container">
             &copy; 2023 - INTEX2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
