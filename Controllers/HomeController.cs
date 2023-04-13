@@ -1,4 +1,5 @@
 ﻿using INTEX2.Models;
+using INTEX2.Data;
 using INTEX2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -11,9 +12,9 @@ namespace INTEX2.Controllers
     public class HomeController : Controller
     {
         private IBurialRepository repo;
-        private BuffaloDbContext _recordContext { get; set; }
+        private mummydbContext _recordContext { get; set; }
 
-        public HomeController (IBurialRepository temp, BuffaloDbContext rContext)
+        public HomeController (IBurialRepository temp, mummydbContext rContext)
         {
             repo = temp;
             _recordContext = rContext;
@@ -30,26 +31,41 @@ namespace INTEX2.Controllers
         {
             return View();
         }
-
+        
         // Burial List
-        public IActionResult BurialList(string burialType, int pageNum = 1)
+        public IActionResult BurialList(string filterType, string filterValue, int pageNum = 1)
         {
             int pageSize = 10;
             
             var data = new BurialsViewModel
             {
+
                 Burials = repo.Burials
-                .Where(b => b.Sex == burialType || burialType == null)
-                .OrderBy(b => b.Id)
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+                    .Where(b =>
+                        filterValue == null ||
+                        (
+                            //filterType == "Textile Color" && b.Sex == filterValue ||
+                            //filterType == "Textile Structure" && b.Sex == filterValue ||
+                            filterType == "Sex" && b.Sex == filterValue ||
+                            //filterType == "Burial Depth" && b.Age == filterValue ||
+                            //filterType == "Estimate Stature" && b.Sex == filterValue ||
+                            filterType == "Age At Death" && b.AgeAtDeath == filterValue ||
+                            filterType == "Head Direction" && b.HeadDirection == filterValue ||
+                            //filterType == "Burial ID" && b.Burialid == filterValue ||
+                            //filterType == "Textile Function" && b.Name == filterValue ||
+                            filterType == "Hair Color" && b.HairColor == filterValue
+                        )
+                    )
+                    .OrderBy(b => b.Id)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
                     TotalBurials =
-                        (burialType == null
+                        (filterValue == null
                             ? repo.Burials.Count()
-                            : repo.Burials.Where(b => b.Sex == burialType).Count()),
+                            : repo.Burials.Where(b => b.Sex == filterValue).Count()),
                     BurialsPerPage = pageSize,
                     CurrentPage = pageNum
                 }
@@ -81,29 +97,46 @@ namespace INTEX2.Controllers
             return View();
         }
 
+        public IActionResult FilterBurialList()
+        {
+            ViewBag.MummyDataTextileColor = _recordContext.MummyData.Select(x => x.ColorValue).Distinct().ToList();
+            ViewBag.MummyDataTextileStructure = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
+            ViewBag.MummyDataSex = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
+            //ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.Depth).Distinct().ToList();
+            ViewBag.MummyDataEstimatedStature = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
+            ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
+            ViewBag.MummyDataHeadDirection = _recordContext.MummyData.Select(x => x.HeadDirection).Distinct().ToList();
+            ViewBag.MummyDataBurialID = _recordContext.MummyData.Select(x => x.BurialNumber).Distinct().ToList();
+            ViewBag.MummyDataTextileFunction = _recordContext.MummyData.Select(x => x.TextileValue).Distinct().ToList();
+            ViewBag.MummyDataHairColor = _recordContext.MummyData.Select(x => x.HairColor).Distinct().ToList();
+            ViewBag.MummyData = _recordContext.MummyData.Distinct().ToList();
+
+            return View();
+        }
+
         // GET - Record
         [HttpGet]
         public IActionResult Record()
         {
-            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+            ViewBag.MummyData = _recordContext.MummyData.ToList();
 
             return View();
         }
 
         // POST - Record
         [HttpPost]
-        public IActionResult Record(Burialmain bm)
+        public IActionResult Record(MummyData md)
         {
             if (ModelState.IsValid)
             {
-                _recordContext.Add(bm);
+                _recordContext.Add(md);
                 _recordContext.SaveChanges();
 
-                return View("Confirmation", bm);
+                return View("Confirmation", md);
             }
             else
             {
-                ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+                ViewBag.MummyData = _recordContext.MummyData.ToList();
 
                 return View();
             }
@@ -113,7 +146,7 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Table()
         {
-            var records = _recordContext.Burialmain
+            var records = _recordContext.MummyData
                 .OrderBy(data => data.Id)
                 .ToList();
 
@@ -124,29 +157,29 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Edit(long recordid)
         {
-            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+            ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-            var record = _recordContext.Burialmain.Single(data => data.Id == recordid);
+            var record = _recordContext.MummyData.Single(data => data.Id == recordid);
 
             return View("Record", record);
         }
 
         // POST - Edit
         [HttpPost]
-        public IActionResult Edit(Burialmain bm, int movieid)
+        public IActionResult Edit(MummyData d, int recordid)
         {
             if (ModelState.IsValid)
             {
-                _recordContext.Update(bm);
+                _recordContext.Update(d);
                 _recordContext.SaveChanges();
 
-                return RedirectToAction("Table", bm);
+                return RedirectToAction("Table", d);
             }
             else
             {
-                ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+                ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-                var record = _recordContext.Burialmain.Single(data => data.Id == movieid);
+                var record = _recordContext.MummyData.Single(data => data.Id == recordid);
 
                 return View("Record", record);
             }
@@ -156,16 +189,16 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Delete(int recordid)
         {
-            var form = _recordContext.Burialmain.Single(data => data.Id == recordid);
+            var form = _recordContext.MummyData.Single(data => data.Id == recordid);
 
             return View(form);
         }
 
         // POST- Delete
         [HttpPost]
-        public IActionResult Delete(Burialmain bm)
+        public IActionResult Delete(MummyData d)
         {
-            _recordContext.Burialmain.Remove(bm);
+            _recordContext.MummyData.Remove(d);
             _recordContext.SaveChanges();
 
             return RedirectToAction("Table");
