@@ -23,7 +23,7 @@ namespace INTEX2.Models
             if (!optionsBuilder.IsConfigured)
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql("Server=burialdb.c3jrpmjwmkyz.us-east-1.rds.amazonaws.com; Port=5432; Database=burialdb; Username=postgres; Password=intex2023;");
+                optionsBuilder.UseNpgsql("Server=burialdb.c3jrpmjwmkyz.us-east-1.rds.amazonaws.com; Port=5432; Database=mummydb; Username=postgres; Password=intex2023;");
             }
         }
 
@@ -31,11 +31,9 @@ namespace INTEX2.Models
         {
             modelBuilder.Entity<MummyData>(entity =>
             {
-                entity.ToTable("mummy");
+                entity.HasNoKey();
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
-                    .UseIdentityAlwaysColumn();
+                entity.ToTable("mummy");
 
                 entity.Property(e => e.AgeAtDeath)
                     .HasMaxLength(200)
@@ -49,6 +47,10 @@ namespace INTEX2.Models
                     .HasMaxLength(500)
                     .HasColumnName("color_value");
 
+                entity.Property(e => e.Depth)
+                    .HasMaxLength(200)
+                    .HasColumnName("depth");
+
                 entity.Property(e => e.FieldNotes)
                     .HasMaxLength(2000)
                     .HasColumnName("field_notes");
@@ -61,6 +63,8 @@ namespace INTEX2.Models
                     .HasMaxLength(200)
                     .HasColumnName("head_direction");
 
+                entity.Property(e => e.Id).HasColumnName("id");
+
                 entity.Property(e => e.Length)
                     .HasMaxLength(200)
                     .HasColumnName("length");
@@ -70,6 +74,11 @@ namespace INTEX2.Models
                 entity.Property(e => e.Photo)
                     .HasMaxLength(500)
                     .HasColumnName("photo");
+
+                entity.Property(e => e.PkId)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("pk_id")
+                    .UseIdentityAlwaysColumn();
 
                 entity.Property(e => e.Sex)
                     .HasMaxLength(200)

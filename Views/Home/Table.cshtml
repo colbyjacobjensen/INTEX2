@@ -8,8 +8,10 @@
     <!--Column Names-->
     <thead class="font-weight-bold">
         <tr>
+            <td>PK</td>
             <td>ID</td>
             <td>Location</td>
+            <td>Depth</td>
             <td>Sex</td>
             <td>Age at Death</td>
             <td>Head Direction</td>
@@ -30,8 +32,10 @@
         @foreach (var x in Model)
             {
                 <tr>
+                    <td>@x.PkId</td>
                     <td>@x.Id</td>
                     <td>@x.Location</td>
+                    <td>@x.Depth</td>
                     <td>@x.Sex</td>
                     <td>@x.AgeAtDeath.</td>
                     <td>@x.HeadDirection.</td>
