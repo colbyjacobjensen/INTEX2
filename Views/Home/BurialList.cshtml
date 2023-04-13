@@ -12,41 +12,40 @@
 
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
+    <ul>
+        <li class="dropdown">
+            <a class="btn btn-primary" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="list-style:none">Filter By</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterSex">Sex</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a></li>
+            </ul>
+        </li>
+    </ul>
+    
 
-    <div>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterBurialList">Filter Burials</a>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterSex">Sex</a>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a>
-        <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a>
-    </div>
+            @*<div>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterBurialList">Filter Burials</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterSex">Sex</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a>
+                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a>
+            </div>*@
 
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Filter Options
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/Home/FilterBurialList">Filter Burials</a>
-            <a class="dropdown-item" href="/Home/FilterTextileColor">Textile Color</a>
-            <a class="dropdown-item" href="/Home/FilterTextileStructure">Textile Structure</a>
-            <a class="dropdown-item" href="/Home/FilterSex">Sex</a>
-            <a class="dropdown-item" href="/Home/FilterHeadDirection">Head Direction</a>
-            <a class="dropdown-item" href="/Home/FilterTextileFunction">Textile Function</a>
-            <a class="dropdown-item" href="/Home/FilterHairColor">Hair Color</a>
+
+            @foreach (MummyData md in Model.Burials)
+            {
+                <partial name="MummySummary" model="md"></partial>
+            }
+
         </div>
-    </div>
 
-
-    @foreach (MummyData md in Model.Burials)
-    {
-        <partial name="MummySummary" model="md"></partial>
-    }
-
-</div>
-
-<div page-links="@Model.PageInfo" page-action="BurialList" page-classes-enabled="true"
-        page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-        class="btn-group pull-right m-1">
-</div>
+        <div page-links="@Model.PageInfo" page-action="BurialList" page-classes-enabled="true"
+                page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+                class="btn-group pull-right m-1">
+        </div>
