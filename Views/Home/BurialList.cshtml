@@ -12,13 +12,15 @@
 
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
-    <ul>
+    <ul style="list-style:none">
         <li class="dropdown">
-            <a class="btn btn-primary" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="list-style:none">Filter By</a>
+            <a class="btn btn-primary" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Filter By</a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
                 <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a></li>
                 <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a></li>
                 <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterSex">Sex</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterBurialDepth">Depth</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterAge">Age</a></li>
                 <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a></li>
                 <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a></li>
                 <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a></li>

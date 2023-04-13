@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\lib\qrcode\" />
+    <Content Remove="Views\Home\FilterDepth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\lib\qrcode\" />

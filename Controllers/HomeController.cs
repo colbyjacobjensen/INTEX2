@@ -47,7 +47,7 @@ namespace INTEX2.Controllers
                             filterType == "Textile Color" && b.ColorValue == filterValue ||
                             filterType == "Textile Structure" && b.StructureValue == filterValue ||
                             filterType == "Sex" && b.Sex == filterValue ||
-                            //filterType == "Burial Depth" && b.Age == filterValue ||
+                            filterType == "Burial Depth" && b.Depth == filterValue ||
                             //filterType == "Estimate Stature" && b.Sex == filterValue ||
                             filterType == "Age At Death" && b.AgeAtDeath == filterValue ||
                             filterType == "Head Direction" && b.HeadDirection == filterValue ||
@@ -56,7 +56,7 @@ namespace INTEX2.Controllers
                             filterType == "Hair Color" && b.HairColor == filterValue
                         )
                     )
-                    .OrderBy(b => b.Id)
+                    .OrderBy(b => b.Photo)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize),
 
@@ -102,7 +102,7 @@ namespace INTEX2.Controllers
             ViewBag.MummyDataTextileColor = _recordContext.MummyData.Select(x => x.ColorValue).Distinct().ToList();
             ViewBag.MummyDataTextileStructure = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
             ViewBag.MummyDataSex = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
-            //ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.Depth).Distinct().ToList();
+            ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.Depth).Distinct().ToList();
             ViewBag.MummyDataEstimatedStature = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
             ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
             ViewBag.MummyDataHeadDirection = _recordContext.MummyData.Select(x => x.HeadDirection).Distinct().ToList();
@@ -135,12 +135,12 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        //public IActionResult FilterBurialDepth()
-        //{
-        //    ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.BurialDepth).Distinct().ToList();
+        public IActionResult FilterBurialDepth()
+        {
+            ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.Depth).Distinct().ToList();
 
-        //    return View();
-        //}
+            return View();
+        }
 
         //public IActionResult FilterStature()
         //{
@@ -149,12 +149,12 @@ namespace INTEX2.Controllers
         //    return View();
         //}
 
-        //public IActionResult FilterAge()
-        //{
-        //    ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
+        public IActionResult FilterAge()
+        {
+            ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
 
-        //    return View();
-        //}
+            return View();
+        }
 
         public IActionResult FilterHeadDirection()
         {
