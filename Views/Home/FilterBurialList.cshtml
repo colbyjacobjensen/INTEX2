@@ -2,7 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-//ViewData["Title"] = "Filter Options";
+    //ViewData["Title"] = "Filter Options";
 }
 
 @model BurialsViewModel
@@ -10,39 +10,194 @@
 <div class="text-center">
     <h1 class="display-4">Filter the Burials</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div>
+        <form method="post" asp-controller="Home" asp-action="BurialList" id="filterCategory">
+            <div class="col">
+                <h4>Filter Category:</h4>
+                <select name="filterType" id="categorySelect">
+                    <option value="">-- SELECT AN OPTION --</option>
+                    <option value="Textile Color">Textile Color</option>
+                    <option value="Textile Structure">Textile Structure</option>
+                    <option value="Sex">Sex</option>
+                    <option value="Burial Depth">Burial Depth</option>
+                    <option value="Estimated Stature">Estimated Stature</option>
+                    <option value="Age at Death">Age at Death</option>
+                    <option value="Head Direction">Head Direction</option>
+                    <option value="Burial ID">Burial ID</option>
+                    <option value="Textile Function">Textile Function</option>
+                    <option value="Hair Color">Hair Color</option>
+                </select>
+            </div>
+        
+            <div class="col">
+                <h4>Filter Value:</h4>
+                @*TEXTILE COLOR*@
+                <select name="filterValue" id="textileColor" style="display:none;">
+                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    {
+                        <option value=""></option>
+                    }
+                </select>
+                @*TEXTILE STRUCTURE*@
+                <select name="filterValue" id="textileStructure" style="display:none;">
+                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    {
+                        <option value=""></option>
+                    }
+                </select>
+                @*SEX*@
+                <select name="filterValue" id="sex" style="display:none;">
+                    @foreach (var s in ViewBag.BurialMainSex)
+                    {
+                        <option value="@s">@s</option>
+                    }
+                </select>
+                @*BURIAL DEPTH*@
+                <select name="filterValue" id="burialDepth" style="display:none;">
+                    @foreach (var bd in ViewBag.BurialMainBurialDepth)
+                    {
+                        <option value="@bd">@bd</option>
+                    }
+                </select>
+                @*ESTIMATED STATURE*@
+                <select name="filterValue" id="estimatedStature" style="display:none;">
+                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    {
+                        <option value=""></option>
+                    }
+                </select>
+                @*AGE AT DEATH*@
+                <select name="filterValue" id="ageAtDeath" style="display:none;">
+                    @foreach (var age in ViewBag.BurialMainAgeAtDeath)
+                    {
+                        <option value="@age">@age</option>
+                    }
+                </select>
+                @*HEAD DIRECTION*@
+                <select name="filterValue" id="headDirection" style="display:none;">
+                    @foreach (var head in ViewBag.BurialMainHeadDirection)
+                    {
+                        <option value="@head">@head</option>
+                    }
+                </select>
+                @*BURIAL ID*@
+                <select name="filterValue" id="burialID" style="display:none;">
+                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    {
+                        <option value="@bm.Burialid">@bm.Burialid</option>
+                    }
+                </select>
+                @*TEXTILE FUNCTION*@
+                <select name="filterValue" id="textileFunction" style="display:none;">
+                    @foreach (Burialmain bm in ViewBag.BurialMain)
+                    {
+                        <option value=""></option>
+                    }
+                </select>
+                @*HAIR COLOR*@
+                <select name="filterValue" id="hairColor" style="display:none;">
+                    @foreach (var hc in ViewBag.BurialMainHairColor)
+                    {
+                        <option value="@hc">@hc</option>
+                    }
+                </select>
+            </div>
+        
+
+            <br />
+            <button class="btn btn-primary" type="submit">Filter</button>
+        </form>
+    </div>
 </div>
 
-<div>
 
-    @*Form to select Category and Value*@
-    <form method="post" asp-controller="Home" asp-action="Burialmain" id="filterCategory">
-        <h4>Filter Category:</h4>
-        <select>
-            <option>Textile Color</option>
-            <option>Textile Structure</option>
-            <option value="Sex">Sex</option>
-            <option>Burial Depth</option>
-            <option>Estimated Stature</option>
-            <option>Age at Death</option>
-            <options>Head Direction</options>
-            <option>Burial ID</option>
-            <option>Textile Function</option>
-            <option>Hair Color</option>
-        </select>
 
-        <h4>Filter Value:</h4>
-    </form>
 
-    <form>
-        <select>
-            @*@if ()*@
-                @foreach (Burialmain bm in ViewBag.BurialMain)
-                {
-                    <option>@bm.Sex</option>
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            // Show/hide the valueSelect based on the selected category
+            $('#categorySelect').on('change', function() {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Textile Color') {
+                    $('#textileColor').show();
+                } else {
+                    $('#textileColor').hide();
                 }
-        </select>
-    </form>
-
-    
-</div>
-
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Textile Structure') {
+                    $('#textileStructure').show();
+                } else {
+                    $('#textileStructure').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Sex') {
+                    $('#sex').show();
+                } else {
+                    $('#sex').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Burial Depth') {
+                    $('#burialDepth').show();
+                } else {
+                    $('#burialDepth').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Estimated Stature') {
+                    $('#estimatedStature').show();
+                } else {
+                    $('#estimatedStature').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Age At Death') {
+                    $('#ageAtDeath').show();
+                } else {
+                    $('#ageAtDeath').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Head Direction') {
+                    $('#headDirection').show();
+                } else {
+                    $('#headDirection').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Burial ID') {
+                    $('#burialID').show();
+                } else {
+                    $('#burialID').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Textile Function') {
+                    $('#textileFunction').show();
+                } else {
+                    $('#textileFunction').hide();
+                }
+            });
+            $('#categorySelect').on('change', function () {
+                var selectedCategory = $(this).val();
+                if (selectedCategory === 'Hair Color') {
+                    $('#hairColor').show();
+                } else {
+                    $('#hairColor').hide();
+                }
+            });
+        });
+    </script>
+}

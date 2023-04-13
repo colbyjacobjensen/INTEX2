@@ -51,6 +51,8 @@ else
 }
 
 app.UseHttpsRedirection();
+
+//Use Static Files
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -58,20 +60,21 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//Endpoints
 app.MapControllerRoute(
     name: "typepage",
     pattern: "{burialType}/Page{pageNum}",
-    defaults: new { Controller = "Home", action = "Index" });
+    defaults: new { Controller = "Home", action = "BurialList" });
 
 app.MapControllerRoute(
     name: "Paging",
     pattern: "Page{pageNum}",
-    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+    defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
 
 app.MapControllerRoute(
     name: "type",
     pattern: "{burialType}",
-    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+    defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
 
 app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 
