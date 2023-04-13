@@ -4,24 +4,53 @@
 @{
 }
 
-@model Burialmain
+@model MummyData
 
 
 <div class="card card-outline-primary m-1 p-1 col">
     <div class="bg-light p-1">
         <h3>ID: @Model.Id</h3>
     </div>
+
+    @*<div class="col-4">
+        <table>
+            <tbody>
+                <tr>
+                    <td>ID</td>
+                    <td>@Model.Id</td>
+                </tr>
+                <tr>
+                    <td>Location</td>
+                    <td>@Model.Location</td>
+                </tr>
+                <tr>
+                    <td>Sex</td>
+                    <td>@Model.Sex</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col">
+        <img src="@Model.Photo" height="75px" />
+    </div>*@
+
     <ul class="card-text p-1" style="list-style:none">
-        <li>Textile Color: BLANK</li>
-        <li>Textile Structure: BLANK</li>
+        <li>ID: @Model.Id</li>
+        <li>Location: @Model.Location</li>
         <li>Sex: @Model.Sex</li>
-        <li>Burial Depth: @Model.Depth</li>
-        <li>Estimated Stature: </li>
-        <li>Age at Death: @Model.Ageatdeath</li>
-        <li>Head Direction: @Model.Headdirection</li>
-        <li>Burial ID: @Model.Burialid</li>
-        <li>Textile Function: BLANK</li>
-        <li>Hair Color: @Model.Haircolor</li>
+        @*<li>Head Direction: @Model.HeadDirection</li>
+        <li>Burial Number: @Model.BurialNumber</li>
+        <li>Age at Death: @Model.AgeAtDeath</li>
+        <li>Structure: @Model.StructureValue</li>
+        <li>Color: @Model.ColorValue</li>
+        <li>Textile: @Model.TextileValue</li>
+        <li>Field Notes: @Model.FieldNotes</li>
+        <li>Length: @Model.Length</li>*@
+        <li>
+            <br />
+            <img src="@Model.Photo" height="75px"/>
+        </li>
     </ul>
 
     <form method="post" asp-controller="Home" asp-action="IndividualDetail">

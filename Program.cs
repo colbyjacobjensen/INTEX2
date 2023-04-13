@@ -11,15 +11,15 @@ using INTEX2.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("BuffaloDBConnection");
+var connectionString = builder.Configuration.GetConnectionString("MummyDBConnection");
 
-builder.Services.AddDbContext<BuffaloDbContext>(options =>
+builder.Services.AddDbContext<mummydbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<BuffaloDbContext>();
+    .AddEntityFrameworkStores<mummydbContext>();
 
 builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
@@ -51,6 +51,8 @@ else
 }
 
 app.UseHttpsRedirection();
+
+//Use Static Files
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -58,20 +60,21 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//Endpoints
 app.MapControllerRoute(
     name: "typepage",
     pattern: "{burialType}/Page{pageNum}",
-    defaults: new { Controller = "Home", action = "Index" });
+    defaults: new { Controller = "Home", action = "BurialList" });
 
 app.MapControllerRoute(
     name: "Paging",
     pattern: "Page{pageNum}",
-    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+    defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
 
 app.MapControllerRoute(
     name: "type",
     pattern: "{burialType}",
-    defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+    defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
 
 app.MapControllerRoute(
     name: "edit",
