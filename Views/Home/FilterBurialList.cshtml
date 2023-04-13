@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+//ViewData["Title"] = "Filter Options";
+}
+
+@model BurialsViewModel
+
+<div class="text-center">
+    <h1 class="display-4">Filter the Burials</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+
+    @*Form to select Category and Value*@
+    <form method="post" asp-controller="Home" asp-action="Burialmain" id="filterCategory">
+        <h4>Filter Category:</h4>
+        <select>
+            <option>Textile Color</option>
+            <option>Textile Structure</option>
+            <option value="Sex">Sex</option>
+            <option>Burial Depth</option>
+            <option>Estimated Stature</option>
+            <option>Age at Death</option>
+            <options>Head Direction</options>
+            <option>Burial ID</option>
+            <option>Textile Function</option>
+            <option>Hair Color</option>
+        </select>
+
+        <h4>Filter Value:</h4>
+    </form>
+
+    <form>
+        <select>
+            @*@if ()*@
+                @foreach (Burialmain bm in ViewBag.BurialMain)
+                {
+                    <option>@bm.Sex</option>
+                }
+        </select>
+    </form>
+
+    
+</div>
+
