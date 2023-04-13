@@ -44,15 +44,15 @@ namespace INTEX2.Controllers
                     .Where(b =>
                         filterValue == null ||
                         (
-                            //filterType == "Textile Color" && b.Sex == filterValue ||
-                            //filterType == "Textile Structure" && b.Sex == filterValue ||
+                            filterType == "Textile Color" && b.ColorValue == filterValue ||
+                            filterType == "Textile Structure" && b.StructureValue == filterValue ||
                             filterType == "Sex" && b.Sex == filterValue ||
                             //filterType == "Burial Depth" && b.Age == filterValue ||
                             //filterType == "Estimate Stature" && b.Sex == filterValue ||
                             filterType == "Age At Death" && b.AgeAtDeath == filterValue ||
                             filterType == "Head Direction" && b.HeadDirection == filterValue ||
                             //filterType == "Burial ID" && b.Burialid == filterValue ||
-                            //filterType == "Textile Function" && b.Name == filterValue ||
+                            filterType == "Textile Function" && b.TextileValue == filterValue ||
                             filterType == "Hair Color" && b.HairColor == filterValue
                         )
                     )
@@ -103,13 +103,83 @@ namespace INTEX2.Controllers
             ViewBag.MummyDataTextileStructure = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
             ViewBag.MummyDataSex = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
             //ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.Depth).Distinct().ToList();
-            ViewBag.MummyDataEstimatedStature = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
+            ViewBag.MummyDataEstimatedStature = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
             ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
             ViewBag.MummyDataHeadDirection = _recordContext.MummyData.Select(x => x.HeadDirection).Distinct().ToList();
             ViewBag.MummyDataBurialID = _recordContext.MummyData.Select(x => x.BurialNumber).Distinct().ToList();
             ViewBag.MummyDataTextileFunction = _recordContext.MummyData.Select(x => x.TextileValue).Distinct().ToList();
             ViewBag.MummyDataHairColor = _recordContext.MummyData.Select(x => x.HairColor).Distinct().ToList();
             ViewBag.MummyData = _recordContext.MummyData.Distinct().ToList();
+
+            return View();
+        }
+
+        public IActionResult FilterTextileColor()
+        {
+            ViewBag.MummyDataTextileColor = _recordContext.MummyData.Select(x => x.ColorValue).Distinct().ToList();
+
+            return View();
+        }
+
+        public IActionResult FilterTextileStructure()
+        {
+            ViewBag.MummyDataTextileStructure = _recordContext.MummyData.Select(x => x.StructureValue).Distinct().ToList();
+
+            return View();
+        }
+
+        public IActionResult FilterSex()
+        {
+            ViewBag.MummyDataSex = _recordContext.MummyData.Select(x => x.Sex).Distinct().ToList();
+
+            return View();
+        }
+
+        //public IActionResult FilterBurialDepth()
+        //{
+        //    ViewBag.MummyDataBurialDepth = _recordContext.MummyData.Select(x => x.BurialDepth).Distinct().ToList();
+
+        //    return View();
+        //}
+
+        //public IActionResult FilterStature()
+        //{
+        //    ViewBag.MummyDataEstimatedStature = _recordContext.MummyData.Select(x => x.Stature).Distinct().ToList();
+
+        //    return View();
+        //}
+
+        //public IActionResult FilterAge()
+        //{
+        //    ViewBag.MummyDataAgeAtDeath = _recordContext.MummyData.Select(x => x.AgeAtDeath).Distinct().ToList();
+
+        //    return View();
+        //}
+
+        public IActionResult FilterHeadDirection()
+        {
+            ViewBag.MummyDataHeadDirection = _recordContext.MummyData.Select(x => x.HeadDirection).Distinct().ToList();
+
+            return View();
+        }
+
+        //public IActionResult FilterBurialId()
+        //{
+        //    ViewBag.MummyDataBurialID = _recordContext.MummyData.Select(x => x.BurialNumber).Distinct().ToList();
+
+        //    return View();
+        //}
+
+        public IActionResult FilterTextileFunction()
+        {
+            ViewBag.MummyDataTextileFunction = _recordContext.MummyData.Select(x => x.TextileValue).Distinct().ToList();
+
+            return View();
+        }
+
+        public IActionResult FilterHairColor()
+        {
+            ViewBag.MummyDataHairColor = _recordContext.MummyData.Select(x => x.HairColor).Distinct().ToList();
 
             return View();
         }
