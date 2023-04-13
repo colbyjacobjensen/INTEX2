@@ -11,9 +11,9 @@
 <div class="text-center">
     <h1 class="display-4">Burial List</h1>
 
-    @foreach (Burialmain bm in Model.Burials)
+    @foreach (MummyData md in Model.Burials)
     {
-        <partial name="MummySummary" model="bm"></partial>
+        <partial name="MummySummary" model="md"></partial>
     }
 
 </div>

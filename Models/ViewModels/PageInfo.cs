@@ -1,5 +1,6 @@
 ﻿using System;
 namespace INTEX2.Models.ViewModels
+
 {
 	public class PageInfo
 	{

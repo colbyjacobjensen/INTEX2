@@ -1,4 +1,5 @@
 ﻿using INTEX2.Models;
+using INTEX2.Data;
 using INTEX2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
@@ -11,9 +12,9 @@ namespace INTEX2.Controllers
     public class HomeController : Controller
     {
         private IBurialRepository repo;
-        private BuffaloDbContext _recordContext { get; set; }
+        private mummydbContext _recordContext { get; set; }
 
-        public HomeController (IBurialRepository temp, BuffaloDbContext rContext)
+        public HomeController (IBurialRepository temp, mummydbContext rContext)
         {
             repo = temp;
             _recordContext = rContext;
@@ -85,25 +86,25 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Record()
         {
-            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+            ViewBag.MummyData = _recordContext.MummyData.ToList();
 
             return View();
         }
 
         // POST - Record
         [HttpPost]
-        public IActionResult Record(Burialmain bm)
+        public IActionResult Record(MummyData d)
         {
             if (ModelState.IsValid)
             {
-                _recordContext.Add(bm);
+                _recordContext.Add(d);
                 _recordContext.SaveChanges();
 
-                return View("Confirmation", bm);
+                return View("Confirmation", d);
             }
             else
             {
-                ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+                ViewBag.MummyData = _recordContext.MummyData.ToList();
 
                 return View();
             }
@@ -113,7 +114,7 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Table()
         {
-            var records = _recordContext.Burialmain
+            var records = _recordContext.MummyData
                 .OrderBy(data => data.Id)
                 .ToList();
 
@@ -124,29 +125,29 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Edit(long recordid)
         {
-            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+            ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-            var record = _recordContext.Burialmain.Single(data => data.Id == recordid);
+            var record = _recordContext.MummyData.Single(data => data.Id == recordid);
 
             return View("Record", record);
         }
 
         // POST - Edit
         [HttpPost]
-        public IActionResult Edit(Burialmain bm, int movieid)
+        public IActionResult Edit(MummyData d, int recordid)
         {
             if (ModelState.IsValid)
             {
-                _recordContext.Update(bm);
+                _recordContext.Update(d);
                 _recordContext.SaveChanges();
 
-                return RedirectToAction("Table", bm);
+                return RedirectToAction("Table", d);
             }
             else
             {
-                ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+                ViewBag.MummyData = _recordContext.MummyData.ToList();
 
-                var record = _recordContext.Burialmain.Single(data => data.Id == movieid);
+                var record = _recordContext.MummyData.Single(data => data.Id == recordid);
 
                 return View("Record", record);
             }
@@ -156,16 +157,16 @@ namespace INTEX2.Controllers
         [HttpGet]
         public IActionResult Delete(int recordid)
         {
-            var form = _recordContext.Burialmain.Single(data => data.Id == recordid);
+            var form = _recordContext.MummyData.Single(data => data.Id == recordid);
 
             return View(form);
         }
 
         // POST- Delete
         [HttpPost]
-        public IActionResult Delete(Burialmain bm)
+        public IActionResult Delete(MummyData d)
         {
-            _recordContext.Burialmain.Remove(bm);
+            _recordContext.MummyData.Remove(d);
             _recordContext.SaveChanges();
 
             return RedirectToAction("Table");
