@@ -93,14 +93,14 @@ namespace INTEX2.Controllers
 
         // POST - Record
         [HttpPost]
-        public IActionResult Record(MummyData d)
+        public IActionResult Record(MummyData md)
         {
             if (ModelState.IsValid)
             {
-                _recordContext.Add(d);
+                _recordContext.Add(md);
                 _recordContext.SaveChanges();
 
-                return View("Confirmation", d);
+                return View("Confirmation", md);
             }
             else
             {
