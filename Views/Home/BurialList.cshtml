@@ -10,7 +10,7 @@
     <vc:types></vc:types>
 </div>*@
 
-<div class="text-center">
+<div class="text-center container">
     <h1 class="display-4">Burial List</h1>
     <ul style="list-style:none">
         <li class="dropdown">
@@ -27,27 +27,29 @@
             </ul>
         </li>
     </ul>
-    
-
-            @*<div>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterBurialList">Filter Burials</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterSex">Sex</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a>
-                <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a>
-            </div>*@
 
 
-            @foreach (MummyData md in Model.Burials)
-            {
-                <partial name="MummySummary" model="md"></partial>
-            }
+    @*<div>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterBurialList">Filter Burials</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterSex">Sex</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a>
+        </div>*@
 
-        </div>
 
-        <div page-links="@Model.PageInfo" page-action="BurialList" page-classes-enabled="true"
-                page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-                class="btn-group pull-right m-1">
-        </div>
+    @foreach (MummyData md in Model.Burials)
+    {
+        <partial name="MummySummary" model="md"></partial>
+    }
+
+
+
+    <div page-links="@Model.PageInfo" page-action="BurialList" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+         class="btn-group pull-right m-1">
+    </div>
+
+</div>
