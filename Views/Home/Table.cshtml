@@ -8,13 +8,14 @@
     <!--Column Names-->
     <thead class="font-weight-bold">
         <tr>
-            <td>ID</td>
             <td>Sex</td>
             <td>Child/Adult</td>
             <td>Age of Death</td>
             <td>Depth</td>
             <td>Head Direction</td>
+            <td>Date of Excavation</td>
             <td>Data Expert Initials</td>
+            <td>Burial ID</td>
         </tr>
     </thead>
 
@@ -22,16 +23,14 @@
         @foreach (var x in Model)
             {
                 <tr>
-                    <td>@x.Id</td>
                     <td>@x.Sex</td>
                     <td>@x.Adultsubadult</td>
                     <td>@x.Ageatdeath</td>
                     <td>@x.Depth</td>
                     <td>@x.Headdirection</td>
+                    <td>@x.Dateofexcavation</td>
                     <td>@x.Dataexpertinitials</td>
-
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-recordid="@x.Id">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete" asp-route-recordid="@x.Id">Delete</a></td>
+                    <td>@x.Burialid</td>
                 </tr>
             }
     </tbody>

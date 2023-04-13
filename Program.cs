@@ -73,10 +73,6 @@ app.MapControllerRoute(
     pattern: "{burialType}",
     defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
 
-app.MapControllerRoute(
-    name: "edit",
-    pattern: "{controller=Home}/{action=Index}/{recordid?}");
-
 app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 
 app.MapRazorPages();
