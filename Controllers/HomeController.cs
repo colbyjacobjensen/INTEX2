@@ -19,16 +19,19 @@ namespace INTEX2.Controllers
             _recordContext = rContext;
         }
 
+        // Index
         public IActionResult Index()
         {
             return View();
         }
 
+        // Privacy
         public IActionResult Privacy()
         {
             return View();
         }
 
+        // Burial List
         public IActionResult BurialList(string burialType, int pageNum = 1)
         {
             int pageSize = 10;
@@ -54,22 +57,40 @@ namespace INTEX2.Controllers
             return View(data);
         }
 
+        // Individual Details
+        public IActionResult IndividualDetail(long id)
+        {
+            var blah = new BurialsViewModel
+            {
+                Burials = repo.Burials
+                .Where(b => b.Id == id)
+            };
+
+            return View(blah);
+        }
+
+        // Supervised 
         public IActionResult Supervised()
         {
             return View();
         }
 
+        // Unsupervised 
         public IActionResult Unsupervised()
         {
             return View();
         }
 
+        // GET - Record
         [HttpGet]
         public IActionResult Record()
         {
+            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+
             return View();
         }
 
+        // POST - Record
         [HttpPost]
         public IActionResult Record(Burialmain bm)
         {
@@ -82,26 +103,72 @@ namespace INTEX2.Controllers
             }
             else
             {
+                ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+
                 return View();
             }
         }
 
+        // GET - Table
+        [HttpGet]
         public IActionResult Table()
         {
-            var records = _recordContext.Burialmain.ToList();
+            var records = _recordContext.Burialmain
+                .OrderBy(data => data.Id)
+                .ToList();
 
             return View(records);
         }
-        
-        public IActionResult IndividualDetail(long id)
-        {
-            var blah = new BurialsViewModel
-            {
-                Burials = repo.Burials
-                .Where(b => b.Id == id)
-            };
 
-            return View(blah);
+        // GET - Edit
+        [HttpGet]
+        public IActionResult Edit(long recordid)
+        {
+            ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+
+            var record = _recordContext.Burialmain.Single(data => data.Id == recordid);
+
+            return View("Record", record);
+        }
+
+        // POST - Edit
+        [HttpPost]
+        public IActionResult Edit(Burialmain bm, int movieid)
+        {
+            if (ModelState.IsValid)
+            {
+                _recordContext.Update(bm);
+                _recordContext.SaveChanges();
+
+                return RedirectToAction("Table", bm);
+            }
+            else
+            {
+                ViewBag.Burialmain = _recordContext.Burialmain.ToList();
+
+                var record = _recordContext.Burialmain.Single(data => data.Id == movieid);
+
+                return View("Record", record);
+            }
+        }
+
+        // GET - Delete
+        [HttpGet]
+        public IActionResult Delete(int recordid)
+        {
+            var form = _recordContext.Burialmain.Single(data => data.Id == recordid);
+
+            return View(form);
+        }
+
+        // POST- Delete
+        [HttpPost]
+        public IActionResult Delete(Burialmain bm)
+        {
+            _recordContext.Burialmain.Remove(bm);
+            _recordContext.SaveChanges();
+
+            return RedirectToAction("Table");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
