@@ -4,16 +4,32 @@
 @{
 }
 
-<h4>Filter Category: Head Direction</h4>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Filter Category: Head Direction</h1>
+        </div>
+    </div>
+</header>
 
-<form method="post" asp-controller="Home" asp-action="BurialList" id="filterCategory">
-    <input type="hidden" name="filterType" value="Head Direction" />
+<div class="container text-center">
+    <h3>Please select a value for Head Direction below:</h3>
+    <br />
 
-    <select name="filterValue" id="headDirection">
-        @foreach (var x in ViewBag.MummyDataHeadDirection)
-        {
-            <option value="@x">@x</option>
-        }
-    </select>
-    <button class="btn btn-primary" type="submit">Filter</button>
-</form>
+    <form method="post" asp-controller="Home" asp-action="BurialList" id="filterCategory">
+        <input type="hidden" name="filterType" value="Head Direction" />
+
+        <label>Head Direction:</label>
+        <select class="my-select" name="filterValue" id="headDirection">
+            @foreach (var x in ViewBag.MummyDataHeadDirection)
+            {
+                <option value="@x">@x</option>
+            }
+        </select>
+        <br />
+        <br />
+        <br />
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </form>
+
+</div>

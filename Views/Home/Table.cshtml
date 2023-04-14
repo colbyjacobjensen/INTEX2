@@ -4,53 +4,63 @@
 
 @model List<MummyData>
 
-<table class="table table-bordered table-striped">
-    <!--Column Names-->
-    <thead class="font-weight-bold">
-        <tr>
-            <td>PK</td>
-            <td>ID</td>
-            <td>Location</td>
-            <td>Depth</td>
-            <td>Sex</td>
-            <td>Age at Death</td>
-            <td>Head Direction</td>
-            <td>Hair Color</td>
-            <td>TextileValue.</td>
-            <td>ColorValue.</td>
-            <td>BurialNumber.</td>
-            <td>StructureValue.</td>
-            <td>TextileValue.</td>
-            <td>Length</td>
-            <td>Photo</td>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Admin Table</h1>
+        </div>
+    </div>
+</header>
 
-            <td>Data Expert Initials</td>
-        </tr>
-    </thead>
+<div class="text-center">
+    <table class="table table-bordered table-striped">
+        <!--Column Names-->
+        <thead class="font-weight-bold">
+            <tr>
+                <td>PK</td>
+                <td>ID</td>
+                <td>Location</td>
+                <td>Depth</td>
+                <td>Sex</td>
+                <td>Age at Death</td>
+                <td>Head Direction</td>
+                <td>Hair Color</td>
+                <td>TextileValue.</td>
+                <td>ColorValue.</td>
+                <td>BurialNumber.</td>
+                <td>StructureValue.</td>
+                <td>TextileValue.</td>
+                <td>Length</td>
+                <td>Photo</td>
 
-    <tbody>
-        @foreach (var x in Model)
-            {
-                <tr>
-                    <td>@x.PkId</td>
-                    <td>@x.Id</td>
-                    <td>@x.Location</td>
-                    <td>@x.Depth</td>
-                    <td>@x.Sex</td>
-                    <td>@x.AgeAtDeath.</td>
-                    <td>@x.HeadDirection.</td>
-                    <td>@x.HairColor.</td>
-                    <td>@x.TextileValue.</td>
-                    <td>@x.ColorValue.</td>
-                    <td>@x.BurialNumber.</td>
-                    <td>@x.StructureValue.</td>
-                    <td>@x.TextileValue.</td>
-                    <td>@x.Length</td>
-                    <td><img src="@x.Photo" height="30px"/></td>
+                <td>Data Expert Initials</td>
+            </tr>
+        </thead>
 
-                    <td><a asp-controller="Home" asp-action="Edit" asp-route-recordid="@x.PkId">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete" asp-route-recordid="@x.PkId">Delete</a></td>
-                </tr>
-            }
-    </tbody>
-</table>
+        <tbody>
+            @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.PkId</td>
+                        <td>@x.Id</td>
+                        <td>@x.Location</td>
+                        <td>@x.Depth</td>
+                        <td>@x.Sex</td>
+                        <td>@x.AgeAtDeath.</td>
+                        <td>@x.HeadDirection.</td>
+                        <td>@x.HairColor.</td>
+                        <td>@x.TextileValue.</td>
+                        <td>@x.ColorValue.</td>
+                        <td>@x.BurialNumber.</td>
+                        <td>@x.StructureValue.</td>
+                        <td>@x.TextileValue.</td>
+                        <td>@x.Length</td>
+                        <td><img src="@x.Photo" height="30px"/></td>
+
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-recordid="@x.PkId">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-recordid="@x.PkId">Delete</a></td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+</div>

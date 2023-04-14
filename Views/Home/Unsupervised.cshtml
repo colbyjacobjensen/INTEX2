@@ -2,87 +2,161 @@
     ViewData["Title"] = "Unsupervised Analysis";
 }
 
-<div class="text-center">
-    <h1 class="display-3">Unsupervised Analysis</h1>
-    <br/>
-    <div class="border d-inline-block">
-        <h3 class="display-5" style="border: 1px solid black; padding: 10px;">Model 1: Head Direction over Time</h3>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Unsupervised Analysis</h1>
+        </div>
     </div>
+</header>
 
-    <img src="~/lib/unsupervised_head_direction_scatter.png" />
-    <br/>
-    <h5>The burrying of mummies facing east phased out over time. In the last 0.67 meters, only mummies facing west have been found.</h5>
-    <br/>
-    <img src="~/lib/unsupervised_head_direction_box.png" />
-    <br/>
-    <h5>The average age of mummies burried facing east is much higher.</h5>
-    <br/>
-    <ul style="display: inline-block; text-align: left;">
-        <li>Length has no observable impact on head direction</li>
-        <li>0.68 Meters was the last time someone was burried facing east</li>
-        <li>East average: 1.8 Meters</li>
-        <li>West average: 1.1 Meters</li>
-    </ul>
-    <br/>
-    <p>
-        We can pull two conclusions from these visualizations. First, length does not have an observable impact on head direction. 
-        Secondly, they stopped burrying mummies with their heads pointing east after 0.68 depth. This shows that around that time, 
-        there was a shift in burial practice to only bury the mummies facing west. 
-        The average depth of mummies facing east looks to be around 1.8 while the average depth facing west looks to be around 1.1. 
-        That is a big difference! This tells us that there was a trend as time went on to start burrying more bodies facing west, rather than east. Until, eventually, they stopped burrying mummies east altogether.
-    </p>
-    <br/>
-    <h3 class="display-5">Model 2: Color over Time</h3>
-    <br/>
-    <img src="~/lib/unsupervised_color_scatter_2.png" />
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <table class="table table-bordered table-hover text-center">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Legend</th>
-                        </tr>
-                    </thead>
-                    <thead>
-                        <tr>
-                            <th>Color</th>
-                            <th>Textile</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="background-color: yellow;"></td>
-                            <td>Yellow Textile</td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: red;"></td>
-                            <td>Red Textile</td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: purple;"></td>
-                            <td>Purple and Red Textile</td>
-                        </tr>
-                    </tbody>
-                </table>
+<!-- Header-->
+<header class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-dark mb-2">Model 1: Head Direction over Time</h1>
+                    <p class="lead fw-normal text-dark-50 mb-4">The burrying of mummies facing east phased out over time. In the last 0.67 meters, only mummies facing west have been found.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#learn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervised_head_direction_scatter.png" alt="..." /></div>
+        </div>
+    </div>
+</header>
+
+<div class="bg-light py-5" id="#learn">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervised_head_direction_box.png" alt="..." /></div>
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <p class="lead fw-normal text-dark-50 mb-4">The average age of mummies burried facing east is much higher.</p>
+                    <ul>
+                        <li>Length has no observable impact on head direction</li>
+                        <li>0.68 Meters was the last time someone was burried facing east</li>
+                        <li>East average: 1.8 Meters</li>
+                        <li>West average: 1.1 Meters</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- About section-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="mb-5">
+                <div class="card h-100 shadow border-0">
+                    <div class="card-body">
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Model 1 Conclusion</div>
+                        <p class="card-text mb-0">
+                            We can pull two conclusions from these visualizations. First, length does not have an observable impact on head direction.
+                            Secondly, they stopped burrying mummies with their heads pointing east after 0.68 depth. This shows that around that time,
+                            there was a shift in burial practice to only bury the mummies facing west.
+                            The average depth of mummies facing east looks to be around 1.8 while the average depth facing west looks to be around 1.1.
+                            That is a big difference! This tells us that there was a trend as time went on to start burrying more bodies facing west,
+                            rather than east. Until, eventually, they stopped burrying mummies east altogether.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-    <br/>
-    <h5>Conclusion: The color of textiles changed over time, from yellow, to red and lastly, red and purple.</h5>
-    <br />
-    <ul style="display: inline-block; text-align: left;">
-        <li>Taller mummies tend to be burried with red textile</li>
-        <li>Oldest to newest colors: Yellow, red, purple</li>
-    </ul>
-    <br />
-    <p>There aren't a ton of data points so this visualization / model is not as strong as our prior one.
-       But, we do find a couple intersting trends. First, the taller (older at death) mummies where mostly burried with red, 
-       with only one of the seven records around 2 meters in length missing red. Our second observation has to do with color over time. 
-       The oldest bodies only contained yellow textile. Then, there is a middle period around 1 meter of depth where there is mostly red and 
-       some yellow. Red seems to have been introudced aroud 1.2 meters while purple was introduced around 1 meter.</p>
+<!-- Model 2 -->
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-dark mb-2">Model 2: Color over Time</h1>
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Legend</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th>Color</th>
+                                <th>Textile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="bg-yellow">Yellow Dot</td>
+                                <td>Yellow Textile</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-red">Red Dot</td>
+                                <td>Red Textile</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-purple">Purple Dot</td>
+                                <td>Purple and Red Textile</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervised_color_scatter_2.png" alt="..." /></div>
+        </div>
+    </div>
+</section>
+
+<!-- About section-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="mb-5">
+                <div class="card h-100 shadow border-0">
+                    <div class="card-body">
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Model 2 Conclusion</div>
+                        <p>
+                            Conclusion: The color of textiles changed over time, from yellow, to red and lastly, red and purple.
+                        </p>
+                        <ul>
+                            <li>Taller mummies tend to be burried with red textile</li>
+                            <li>Oldest to newest colors: Yellow, red, purple</li>
+                        </ul>
+
+                        <p>
+                            There aren't a ton of data points so this visualization / model is not as strong as our prior one.
+                            But, we do find a couple intersting trends. First, the taller (older at death) mummies where mostly burried with red,
+                            with only one of the seven records around 2 meters in length missing red. Our second observation has to do with color over time.
+                            The oldest bodies only contained yellow textile. Then, there is a middle period around 1 meter of depth where there is mostly red and
+                            some yellow. Red seems to have been introudced aroud 1.2 meters while purple was introduced around 1 meter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conclusion section-->
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row gx-5 justify-content-center">
+            <div>
+                <div class="text-center">
+                    <div class="fs-4 mb-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
