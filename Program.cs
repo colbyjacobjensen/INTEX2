@@ -21,26 +21,10 @@ var connectionString = builder.Configuration.GetConnectionString("MummyDBConnect
 builder.Services.AddDbContext<mummydbContext>(options =>
     options.UseNpgsql(connectionString));
 
-builder.Services.AddDbContext<IdentityContext>(opts =>
-	opts.UseNpgsql(builder.Configuration[
-		"ConnectionStrings:IdentityConnection"]));
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-	.AddEntityFrameworkStores<IdentityContext>();
-
-builder.Services.Configure<IdentityOptions>(opts => {
-    opts.Password.RequiredLength = 10;
-    opts.Password.RequireNonAlphanumeric = true;
-    opts.Password.RequireLowercase = true;
-    opts.Password.RequireUppercase = true;
-    opts.Password.RequireDigit = true;
-    opts.User.RequireUniqueEmail = true;
-    opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz1234567890";
-});
-
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-//builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-//    .AddEntityFrameworkStores<mummydbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<mummydbContext>();
 
 builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
@@ -119,7 +103,5 @@ app.MapControllerRoute(
 app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 
 app.MapRazorPages();
-
-IdentitySeedData.CreateAdminAccount(app.Services, app.Configuration);
 
 app.Run();
