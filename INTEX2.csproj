@@ -25,6 +25,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
     <PackageReference Include="Npgsql" Version="7.0.2" />
+    <PackageReference Include="MessagePackAnalyzer" Version="2.1.152" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +40,7 @@
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="Views\Shared\Components\Types\" />
     <Folder Include="Pages\" />
+    <Folder Include="Views\UserRoleManagement\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\ViewModels\" />
@@ -47,5 +49,6 @@
     <None Remove="Views\Shared\Components\" />
     <None Remove="Views\Shared\Components\Types\" />
     <None Remove="Pages\" />
+    <None Remove="Views\UserRoleManagement\" />
   </ItemGroup>
 </Project>
