@@ -120,6 +120,4 @@ app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 
 app.MapRazorPages();
 
-IdentitySeedData.CreateAdminAccount(app.Services, app.Configuration);
-
 app.Run();
