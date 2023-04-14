@@ -16,14 +16,15 @@
         <div class="row gx-5 align-items-center justify-content-center">
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#model2">View Model 2</a><br />
+                    <br />
                     <h1 class="display-5 fw-bolder text-dark mb-2">Model 1: Head Direction over Time</h1>
-                    <p class="lead fw-normal text-dark-50 mb-4">The burrying of mummies facing east phased out over time. In the last 0.67 meters, only mummies facing west have been found.</p>
+                    <p class="lead fw-normal text-dark-50 mb-4">Over time, the practice of burying mummies in an eastward-facing position has gradually declined. Archeological studies have shown that within the uppermost 0.67 meters of burial sites, exclusively westward-facing mummies have been uncovered. This shift in burial orientation suggests a significant cultural evolution within the ancient societies that adhered to the practice of mummification.</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                     </div>
+                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#model2">View Model 2</a>
                 </div>
             </div>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervised_head_direction_scatter.png" alt="..." /></div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervisedheaddirectionscatter.jpg" alt="..." /></div>
         </div>
     </div>
 </header>
@@ -31,13 +32,13 @@
 <div class="bg-light py-5" id="#learn">
     <div class="container px-5">
         <div class="row gx-5 align-items-center justify-content-center">
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervised_head_direction_box.png" alt="..." /></div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervisedheaddirectionbox.jpg" alt="..." /></div>
             <div class="col-lg-8 col-xl-7 col-xxl-6">
                 <div class="my-5 text-center text-xl-start">
-                    <p class="lead fw-normal text-dark-50 mb-4">The average age of mummies burried facing east is much higher.</p>
+                    <p class="lead fw-normal text-dark-50 mb-4">A notable observation in the burial practices of mummies is that those buried in an eastward-facing position tend to have a considerably higher average age compared to those buried facing other directions. </p>
                     <ul>
                         <li>Length has no observable impact on head direction</li>
-                        <li>0.68 Meters was the last time someone was burried facing east</li>
+                        <li>0.68 Meters in Depth was the last time someone was burried facing east</li>
                         <li>East average: 1.8 Meters</li>
                         <li>West average: 1.1 Meters</li>
                     </ul>
@@ -56,12 +57,15 @@
                     <div class="card-body">
                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">Model 1 Conclusion</div>
                         <p class="card-text mb-0">
-                            We can pull two conclusions from these visualizations. First, length does not have an observable impact on head direction.
-                            Secondly, they stopped burrying mummies with their heads pointing east after 0.68 depth. This shows that around that time,
-                            there was a shift in burial practice to only bury the mummies facing west.
-                            The average depth of mummies facing east looks to be around 1.8 while the average depth facing west looks to be around 1.1.
-                            That is a big difference! This tells us that there was a trend as time went on to start burrying more bodies facing west,
-                            rather than east. Until, eventually, they stopped burrying mummies east altogether.
+                            The visualizations reveal two significant observations.
+                            Length does not impact the direction of head placement during burial.
+                            Additionally, there is a clear shift in burial practices.
+                            Mummies with their heads pointing east were not interred below 0.68 depth.
+                            Deeper mummies were exclusively found with their heads facing west, indicating a gradual cultural evolution
+                            towards westward-facing burials. The average depth of mummies facing east is approximately 1.8,
+                            while those facing west have an average depth of approximately 1.1, indicating a notable difference.
+                            This shift in burial practices highlights the changing customs and beliefs of ancient civilizations.
+                            Further research is necessary to fully comprehend its significance.
                         </p>
                     </div>
                 </div>
@@ -108,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervised_color_scatter_2.png" alt="..." /></div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervisedcolorscatter2.jpg" alt="..." /></div>
         </div>
     </div>
 </section>
@@ -130,11 +134,14 @@
                         </ul>
 
                         <p>
-                            There aren't a ton of data points so this visualization / model is not as strong as our prior one.
-                            But, we do find a couple intersting trends. First, the taller (older at death) mummies where mostly burried with red,
-                            with only one of the seven records around 2 meters in length missing red. Our second observation has to do with color over time.
-                            The oldest bodies only contained yellow textile. Then, there is a middle period around 1 meter of depth where there is mostly red and
-                            some yellow. Red seems to have been introudced aroud 1.2 meters while purple was introduced around 1 meter.
+                            Due to a limited number of data points, the current visualization/model may not exhibit the same degree of
+                            robustness as its predecessor. Nevertheless, some noteworthy trends have emerged from the analysis.
+                            Firstly, it was observed that the majority of taller mummies (those with a higher age at death) were interred
+                            with red textiles, with only one out of the seven records, which measured around 2 meters in length,
+                            not displaying this color. Our second observation pertains to color usage over time.
+                            The earliest bodies examined only contained yellow textiles. However, a middle period, approximately 1 meter deep,
+                            exhibited mostly red textiles with some yellow, indicating that red was introduced around 1.2 meters
+                            while purple was introduced at a depth of around 1 meter.
                         </p>
                     </div>
                 </div>
