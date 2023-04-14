@@ -1,0 +1,23 @@
+﻿.no-bullets {
+    list-style: none;
+}
+
+.my-navbar {
+    bottom: 0;
+}
+
+.bg-red{
+    background-color: red;
+}
+
+.bg-yellow {
+    background-color: yellow;
+}
+
+.bg-purple {
+    background-color: purple;
+}
+
+.my-select {
+    width: 200px;
+}

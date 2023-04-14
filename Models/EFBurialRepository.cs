@@ -8,12 +8,12 @@ namespace INTEX2.Models
 {
     public class EFBurialRepository : IBurialRepository
     {
-        private BuffaloDbContext context { get; set; }
+        private mummydbContext context { get; set; }
 
-        public EFBurialRepository(BuffaloDbContext temp)
+        public EFBurialRepository(mummydbContext temp)
         {
             context = temp;
         }
-        public IQueryable<Burialmain> Burials => context.Burialmain;
+        public IQueryable<MummyData> Burials => context.MummyData;
     }
 }

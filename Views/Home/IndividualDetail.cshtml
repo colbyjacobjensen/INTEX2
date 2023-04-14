@@ -6,8 +6,74 @@
 
 @model BurialsViewModel
 
-@foreach (Burialmain bm in Model.Burials)
+@foreach (MummyData md in Model.Burials)
 {
-    <h1>Detail for @bm.Id</h1>
-    <p>@bm.Sex</p>
+    <div class="text-center">
+        <h1>Detail for @md.Id</h1>
+
+        <table class="table table-bordered table-striped">
+            <thead class="font-weight-bold bg-secondary text-white">
+                <tr>
+                    <td><strong>Attribute</strong></td>
+                    <td><strong>Value</strong></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Location</td>
+                    <td>@md.Location</td>
+                </tr>
+                <tr>
+                    <td>Head Direction</td>
+                    <td>@md.HeadDirection</td>
+                </tr>
+                <tr>
+                    <td>Sex</td>
+                    <td>@md.Sex</td>
+                </tr>
+                <tr>
+                    <td>Hair Color</td>
+                    <td>@md.HairColor</td>
+                </tr>
+                <tr>
+                    <td>Burial Number</td>
+                    <td>@md.BurialNumber</td>
+                </tr>
+                <tr>
+                    <td>Age At Death</td>
+                    <td>@md.AgeAtDeath</td>
+                </tr>
+                <tr>
+                    <td>Textile Structure</td>
+                    <td>@md.StructureValue</td>
+                </tr>
+                <tr>
+                    <td>Textile Color</td>
+                    <td>@md.ColorValue</td>
+                </tr>
+                <tr>
+                    <td>Textile</td>
+                    <td>@md.TextileValue</td>
+                </tr>
+                <tr>
+                    <td>Field Notes</td>
+                    <td>@md.FieldNotes</td>
+                </tr>
+                <tr>
+                    <td>Length</td>
+                    <td>@md.Length</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+        <img src="@md.Photo" />
+
+        <br /><br />
+
+        <a class="btn btn-outline-secondary" href="@md.Photo">Original Photo</a>
+    </div>
+
+
 }
