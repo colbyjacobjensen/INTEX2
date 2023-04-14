@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace INTEX2.Controllers
 {
@@ -185,6 +186,7 @@ namespace INTEX2.Controllers
         }
 
         // GET - Record
+        [Authorize]
         [HttpGet]
         public IActionResult Record()
         {
@@ -194,6 +196,7 @@ namespace INTEX2.Controllers
         }
 
         // POST - Record
+        [Authorize]
         [HttpPost]
         public IActionResult Record(MummyData md)
         {
@@ -223,7 +226,9 @@ namespace INTEX2.Controllers
             return View(records);
         }
 
+
         // GET - Edit
+        //[Authorize]
         [HttpGet]
         public IActionResult Edit(long recordid)
         {
@@ -235,6 +240,7 @@ namespace INTEX2.Controllers
         }
 
         // POST - Edit
+        //[Authorize]
         [HttpPost]
         public IActionResult Edit(MummyData d, int recordid)
         {
@@ -256,6 +262,7 @@ namespace INTEX2.Controllers
         }
 
         // GET - Delete
+        //[Authorize("Admin")]
         [HttpGet]
         public IActionResult Delete(int recordid)
         {
@@ -265,6 +272,7 @@ namespace INTEX2.Controllers
         }
 
         // POST- Delete
+        //[Authorize("Admin")]
         [HttpPost]
         public IActionResult Delete(MummyData d)
         {

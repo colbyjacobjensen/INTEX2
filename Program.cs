@@ -73,6 +73,7 @@ app.UseAuthorization();
 	//endpoints.MapControllers();
 //});
 
+//CookieSecurePolicy
 app.Use(async (context, next) =>
 {
     context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' cwadmin.byu.edu; frame-src 'self'");
