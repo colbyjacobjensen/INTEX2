@@ -21,10 +21,13 @@ var connectionString = builder.Configuration.GetConnectionString("MummyDBConnect
 builder.Services.AddDbContext<mummydbContext>(options =>
     options.UseNpgsql(connectionString));
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+	options.UseNpgsql(builder.Configuration.GetConnectionString("RolesDBConnection")));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<mummydbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
@@ -40,6 +43,10 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 
 	options.MinimumSameSitePolicy = SameSiteMode.None;
 });
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+	options.UseSqlServer(connectionString));
+builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 var app = builder.Build();
 
