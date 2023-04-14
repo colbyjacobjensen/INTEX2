@@ -1,21 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Supervised Analysis";
-}
-
-<header class="bg-dark py-5">
-    <div class="container px-5">
-        <div class="row gx-5 align-items-center justify-content-center">
-            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Supervised Analysis</h1>
-        </div>
-    </div>
-</header>
-
-<br />
-
-@*A page that allows the user to enter osteology and/or burial information to predict (based on your trained model)
-    the sex of the burial (see information re: IS 455 requirements)*@
-
-@model BurialsViewModel
+﻿@model BurialsViewModel
 
 <div class="col-md-6 mx-auto">
     <form action="http://127.0.0.1:5000/predict?$" method="GET">
@@ -205,21 +188,16 @@
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.querySelector('form');
             const resultContainer = document.querySelector('#result-container');
-
             form.addEventListener('submit', (event) => {
                 event.preventDefault(); // prevent default form submission behavior
-
                 const formData = new FormData(form); // get form data
-
                 const queryParams = new URLSearchParams(formData); // create URL query params
-
                 fetch(`http://127.0.0.1:5000/predict?${queryParams}`, {
                     method: 'GET'
                 })
                     .then(response => response.json()) // parse response as JSON
                     .then(data => {
                         const prediction = data['prediction'][0][0]; // extract prediction value from JSON response
-
                         // map the predicted numbers to their corresponding text values
                         const map = {
                             'W': 'Whole Wrapped',
@@ -227,7 +205,6 @@
                             'B': 'Bones'
                         }
                         const textValue = prediction in map ? map[prediction] : 'Unknown'; // map predicted value to corresponding text value, or set to 'Unknown' if not in map
-
                         // update HTML on page with prediction
                         if (resultContainer) {
                             resultContainer.innerHTML = `Prediction: ${textValue}`;
@@ -235,7 +212,6 @@
                             console.error('Error: Result container element not found');
                         }
                     })
-
                     .catch(error => {
                         console.error('Error:', error);
                     });
@@ -244,4 +220,3 @@
     </script>
 
 </div>
-
