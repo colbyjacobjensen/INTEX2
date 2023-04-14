@@ -17,15 +17,15 @@ builder.Logging.ClearProviders(); // Remove the default logging provider
 builder.Logging.AddConsole(); // Add the console logging provider
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString("BuffaloDBConnection");
+var connectionString = builder.Configuration.GetConnectionString("MummyDBConnection");
 
-builder.Services.AddDbContext<BuffaloDbContext>(options =>
-	options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<mummydbContext>(options =>
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-	.AddEntityFrameworkStores<BuffaloDbContext>();
+    .AddEntityFrameworkStores<mummydbContext>();
 
 builder.Services.AddScoped<IBurialRepository, EFBurialRepository>();
 
@@ -56,34 +56,50 @@ else
 	app.UseHsts();
 }
 
-// app.UseHttpsRedirection(); // Remove this line to disable HTTPS redirection
+app.UseHttpsRedirection();
 
+//Use Static Files
 app.UseStaticFiles();
+app.UseCookiePolicy();
 
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
+
+//MAY NEED TO UNCOMMENT
+//app.UseEndpoints(endpoints =>
+//{
+	//endpoints.MapControllers();
+//});
+
+app.Use(async (context, next) =>
 {
-	endpoints.MapControllers();
+    context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' cwadmin.byu.edu; frame-src 'self'");
+
+    await next();
 });
 
+//Endpoints
 app.MapControllerRoute(
-	name: "typepage",
-	pattern: "{burialType}/Page{pageNum}",
-	defaults: new { Controller = "Home", action = "Index" });
+    name: "typepage",
+    pattern: "{burialType}/Page{pageNum}",
+    defaults: new { Controller = "Home", action = "BurialList" });
 
 app.MapControllerRoute(
-	name: "Paging",
-	pattern: "Page{pageNum}",
-	defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+    name: "Paging",
+    pattern: "Page{pageNum}",
+    defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
 
 app.MapControllerRoute(
-	name: "type",
-	pattern: "{burialType}",
-	defaults: new { Controller = "Home", action = "Index", pageNum = 1 });
+    name: "type",
+    pattern: "{burialType}",
+    defaults: new { Controller = "Home", action = "BurialList", pageNum = 1 });
+
+app.MapControllerRoute(
+    name: "edit",
+    pattern: "{controller=Home}/{action=Index}/{recordid?}");
 
 app.MapDefaultControllerRoute(); // Use default pattern to send user to "Index"
 

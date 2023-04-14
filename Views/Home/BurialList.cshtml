@@ -4,21 +4,60 @@
 
 @model BurialsViewModel
 
-<div id="types" class="col-3">
+
+@*Filters*@
+@*<div id="types" class="col-3">
     <vc:types></vc:types>
-</div>
+</div>*@
 
-<div class="text-center">
-    <h1 class="display-4">Burial List</h1>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Burial List</h1>
+        </div>
+    </div>
+</header>
 
-    @foreach (Burialmain bm in Model.Burials)
+<br />
+
+<div class="text-center container">
+    <ul class="no-bullets">
+        <li class="dropdown">
+            <a class="btn btn-primary" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Filter By</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterSex">Sex</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterBurialDepth">Depth</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterAge">Age</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a></li>
+                <li><a class="dropdown-item" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a></li>
+            </ul>
+        </li>
+    </ul>
+
+
+    @*<div>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterBurialList">Filter Burials</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileColor">Textile Color</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileStructure">Textile Structure</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterSex">Sex</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHeadDirection">Head Direction</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterTextileFunction">Textile Function</a>
+            <a class="btn btn-primary" asp-controller="Home" asp-action="FilterHairColor">Hair Color</a>
+        </div>*@
+
+
+    @foreach (MummyData md in Model.Burials)
     {
-        <partial name="MummySummary" model="bm"></partial>
+        <partial name="MummySummary" model="md"></partial>
     }
 
-</div>
 
-<div page-links="@Model.PageInfo" page-action="BurialList" page-classes-enabled="true"
-        page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-        class="btn-group pull-right m-1">
+    <div page-links="@Model.PageInfo" page-action="BurialList" page-classes-enabled="true"
+         page-class="btn" page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+         class="btn-group pull-right m-1">
+    </div>
+
 </div>
