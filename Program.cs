@@ -54,11 +54,19 @@ app.UseHttpsRedirection();
 
 //Use Static Files
 app.UseStaticFiles();
+app.UseCookiePolicy();
 
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'; font-src 'self'; img-src 'self' cwadmin.byu.edu; frame-src 'self'");
+
+    await next();
+});
 
 //Endpoints
 app.MapControllerRoute(

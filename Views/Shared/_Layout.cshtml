@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - INTEX2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/styles.css"/>
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/mystyles.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/INTEX2.styles.css" asp-append-version="true" />
 </head>
@@ -70,11 +71,12 @@
             </nav>*@
     </header>
 
-    <div style="padding-bottom:10%">
-        <partial name="_CookieConsentPartial" />
+    <div class="my-navbar">
+        <partial name="_CookieConsentPartial"></partial>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+
     </div>
 
     <!-- Footer-->
