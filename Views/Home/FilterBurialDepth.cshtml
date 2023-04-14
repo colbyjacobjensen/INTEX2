@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Filter Burial Depth";
+}
+
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Filter Category: Burial Depth</h1>
+        </div>
+    </div>
+</header>
+
+<div class="container text-center">
+    <h3>Please select a value for Burial Depth below:</h3>
+    <br />
+
+    <form method="post" asp-controller="Home" asp-action="BurialList" id="filterCategory">
+        <input type="hidden" name="filterType" value="Burial Depth" />
+
+        <label>Burial Depth:</label>
+        <select class="my-select" name="filterValue" id="depth">
+            @foreach (var x in ViewBag.MummyDataBurialDepth)
+            {
+                <option value="@x">@x</option>
+            }
+        </select>
+        <br />
+        <br />
+        <br />
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </form>
+
+</div>

@@ -5,25 +5,285 @@
     ViewData["Title"] = "Supervised Analysis";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Supervised Analysis</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Supervised Analysis</h1>
+        </div>
+    </div>
+</header>
 
 @*A page that allows the user to enter osteology and/or burial information to predict (based on your trained model)
     the sex of the burial (see information re: IS 455 requirements)*@
 
 @model  BurialsViewModel
 
-<form class="text-center">
-    <label>Sex</label>
-    <select>
-        <option></option>
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-        <option value="">Unknown</option>
-    </select>
-    <br />
-    <label>Depth (ft)</label>
-    <input/>
+@*<form action="http://127.0.0.1:5000/predict" method="GET">
+	<label for="squarenorthsouth">Square North-South:</label>
+	<input type="number" id="squarenorthsouth" name="squarenorthsouth" value="200"><br><br>
+
+	<label for="squareeastwest">Square East-West:</label>
+	<input type="number" id="squareeastwest" name="squareeastwest" value="20"><br><br>
+
+	<label for="yellow">Yellow:</label>
+	<input type="number" id="yellow" name="yellow" value="0"><br><br>
+
+	<label for="white">White:</label>
+	<input type="number" id="white" name="white" value="0"><br><br>
+
+	<label for="red">Red:</label>
+	<input type="number" id="red" name="red" value="0"><br><br>
+
+	<label for="purple">Purple:</label>
+	<input type="number" id="purple" name="purple" value="0"><br><br>
+
+	<label for="color">Color:</label>
+	<input type="number" id="color" name="color" value="0"><br><br>
+
+	<label for="adultsubadult_A">Adultsubadult A:</label>
+	<input type="number" id="adultsubadult_A" name="adultsubadult_A" value="1"><br><br>
+
+	<label for="adultsubadult_C">Adultsubadult C:</label>
+	<input type="number" id="adultsubadult_C" name="adultsubadult_C" value="0"><br><br>
+
+	<label for="area_NE">Area NE:</label>
+	<input type="number" id="area_NE" name="area_NE" value="0"><br><br>
+
+	<label for="area_SE">Area SE:</label>
+	<input type="number" id="area_SE" name="area_SE" value="1"><br><br>
+
+	<label for="area_SW">Area SW:</label>
+	<input type="number" id="area_SW" name="area_SW" value="0"><br><br>
+
+	<select id="depthlevel" name="depthlevel">
+		<option value="Shallow">Shallow</option>
+		<option value="Mid_Shallow">Mid-Shallow</option>
+		<option value="Mid_Deep">Mid-Deep</option>
+	</select><br><br>
+
+
+	<input type="submit" value="Submit" onclick="updateDepthLevel()">
 </form>
+
+<script>
+	function updateDepthLevel() {
+		var selectedOption = document.getElementById("depthlevel").value;
+		document.getElementById("depthlevel_" + selectedOption).value = 1;
+		document.getElementById("depthlevel_selected").value = selectedOption;
+	}
+</script>*@
+
+<form action="http://54.174.141.234:5000?$/predict" method="GET">
+	<label for="squarenorthsouth">Square North-South:</label>
+	<input type="number" id="squarenorthsouth" name="squarenorthsouth" value="0"><br><br>
+
+	<label for="squareeastwest">Square East-West:</label>
+	<input type="number" id="squareeastwest" name="squareeastwest" value="0"><br><br>
+
+	<label for="nothing">Colors:</label><br/>
+
+	<label for="yellow">Yellow</label>
+	<select id="yellow" name="yellow">
+		<option value="0">No</option>
+		<option value="1">Yes</option>
+	</select>
+
+	<br />
+
+	<label for="white">White</label>
+	<select id="white" name="white">
+		<option value="0">No</option>
+		<option value="1">Yes</option>
+	</select>
+
+	<br />
+
+	<label for="red">Red</label>
+	<select id="red" name="red">
+		<option value="0">No</option>
+		<option value="1">Yes</option>
+	</select>
+
+	<br />
+
+	<label for="purple">Purple</label>
+	<select id="purple" name="purple">
+		<option value="0">No</option>
+		<option value="1">Yes</option>
+	</select>
+
+	<input type="hidden" id="color" name="color" value="0">
+
+
+	<script>
+		var colors = document.querySelectorAll('select[name="yellow"], select[name="white"], select[name="red"], select[name="purple"]');
+		for (var i = 0; i < colors.length; i++) {
+			colors[i].addEventListener('change', function () {
+				var colorSelected = false;
+				for (var j = 0; j < colors.length; j++) {
+					if (colors[j].value == 1) {
+						colorSelected = true;
+						break;
+					}
+				}
+				document.getElementById('color').value = colorSelected ? 1 : 0;
+			});
+		}
+	</script>
+
+
+
+
+	<br/><br/>
+
+	<label for="age">Age At Death:</label>
+	<select id="age" name="">
+		<option value="Adult">Adult</option>
+		<option value="Child">Child</option>
+		<option value="Infant">Infant</option>
+	</select>
+	<input type="hidden" id="adultsubadult_A" name="adultsubadult_A" value="0">
+	<input type="hidden" id="adultsubadult_C" name="adultsubadult_C" value="0">
+
+	<script>
+		var ageSelect = document.getElementById("age");
+		ageSelect.addEventListener("change", function () {
+			var ageValue = ageSelect.value;
+			if (ageValue == "Adult") {
+				document.getElementById("adultsubadult_A").value = 1;
+				document.getElementById("adultsubadult_C").value = 0;
+			} else if (ageValue == "Child") {
+				document.getElementById("adultsubadult_A").value = 0;
+				document.getElementById("adultsubadult_C").value = 1;
+			} else if (ageValue == "Infant") {
+				document.getElementById("adultsubadult_A").value = 0;
+				document.getElementById("adultsubadult_C").value = 0;
+			}
+		});
+	</script>
+
+	<br/><br/>
+
+	<label for="area">Area:</label>
+	<select id="area" name="">
+		<option value="NE">NE</option>
+		<option value="NW">NW</option>
+		<option value="SE">SE</option>
+		<option value="SW">SW</option>
+	</select>
+	<input type="hidden" id="area_NE" name="area_NE" value="0">
+	<input type="hidden" id="area_SE" name="area_SE" value="0">
+	<input type="hidden" id="area_SW" name="area_SW" value="0">
+
+	<script>
+		var areaSelect = document.getElementById("area");
+		areaSelect.addEventListener("change", function () {
+			var areaValue = areaSelect.value;
+			if (areaValue == "NE") {
+				document.getElementById("area_NE").value = 1;
+				document.getElementById("area_SE").value = 0;
+				document.getElementById("area_SW").value = 0;
+			} else if (areaValue == "SE") {
+				document.getElementById("area_NE").value = 0;
+				document.getElementById("area_SE").value = 1;
+				document.getElementById("area_SW").value = 0;
+			} else if (areaValue == "SW") {
+				document.getElementById("area_NE").value = 0;
+				document.getElementById("area_SE").value = 0;
+				document.getElementById("area_SW").value = 1;
+			} else if (areaValue == "NW") {
+				document.getElementById("area_NE").value = 0;
+				document.getElementById("area_SE").value = 0;
+				document.getElementById("area_SW").value = 0;
+			}
+		});
+	</script>
+
+	<br/><br/>
+
+	<label for="depth">Depth:</label>
+	<select id="depth" name="">
+		<option value="Mid_Deep">Deep</option>
+		<option value="Mid_Deep">Mid-Deep</option>
+		<option value="Mid_Shallow">Mid-Shallow</option>
+		<option value="Shallow">Shallow</option>
+	</select>
+	<input type="hidden" id="depthlevel_Mid_Deep" name="depthlevel_Mid_Deep" value="0">
+	<input type="hidden" id="depthlevel_Mid_Shallow" name="depthlevel_Mid_Shallow" value="0">
+	<input type="hidden" id="depthlevel_Shallow" name="depthlevel_Shallow" value="0">
+
+	<script>
+		var depthSelect = document.getElementById("depth");
+		depthSelect.addEventListener("change", function () {
+			var depthValue = depthSelect.value;
+			if (depthValue == "Mid_Deep") {
+				document.getElementById("depthlevel_Mid_Deep").value = 1;
+				document.getElementById("depthlevel_Mid_Shallow").value = 0;
+				document.getElementById("depthlevel_Shallow").value = 0;
+			} else if (depthValue == "Mid_Shallow") {
+				document.getElementById("depthlevel_Mid_Deep").value = 0;
+				document.getElementById("depthlevel_Mid_Shallow").value = 1;
+				document.getElementById("depthlevel_Shallow").value = 0;
+			} else if (depthValue == "Shallow") {
+				document.getElementById("depthlevel_Mid_Deep").value = 0;
+				document.getElementById("depthlevel_Mid_Shallow").value = 0;
+				document.getElementById("depthlevel_Shallow").value = 1;
+			} else if (depthValue == "Deep") {
+				document.getElementById("depthlevel_Mid_Deep").value = 0;
+				document.getElementById("depthlevel_Mid_Shallow").value = 0;
+				document.getElementById("depthlevel_Shallow").value = 0;
+		}
+		});
+	</script>
+
+	<br/><br/>
+
+	<input type="submit" value="Submit">
+</form>
+
+<div id="result-container"></div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const form = document.querySelector('form');
+		const resultContainer = document.querySelector('#result-container');
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault(); // prevent default form submission behavior
+
+			const formData = new FormData(form); // get form data
+
+			const queryParams = new URLSearchParams(formData); // create URL query params
+
+			fetch(`http://54.174.141.234:5000/predict?${queryParams}`, {
+				method: 'GET'
+			})
+				.then(response => response.json()) // parse response as JSON
+				.then(data => {
+					const prediction = data['prediction'][0][0]; // extract prediction value from JSON response
+
+					// map the predicted numbers to their corresponding text values
+					const map = {
+						'W': 'Whole Wrapped',
+						'H': 'Half Wrapped',
+						'B': 'Bones'
+					}
+					const textValue = prediction in map ? map[prediction] : 'Unknown'; // map predicted value to corresponding text value, or set to 'Unknown' if not in map
+
+					// update HTML on page with prediction
+					if (resultContainer) {
+						resultContainer.innerHTML = `Prediction: ${textValue}`;
+					} else {
+						console.error('Error: Result container element not found');
+					}
+				})
+
+				.catch(error => {
+					console.error('Error:', error);
+				});
+		});
+	});
+</script>
+
+
+

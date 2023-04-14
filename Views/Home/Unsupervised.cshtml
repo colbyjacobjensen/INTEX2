@@ -1,11 +1,169 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
     ViewData["Title"] = "Unsupervised Analysis";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Unsupervised Analysis</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Unsupervised Analysis</h1>
+        </div>
+    </div>
+</header>
+
+<!-- Header-->
+<header class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <br />
+                    <h1 class="display-5 fw-bolder text-dark mb-2">Model 1: Head Direction over Time</h1>
+                    <p class="lead fw-normal text-dark-50 mb-4">Over time, the practice of burying mummies in an eastward-facing position has gradually declined. Archeological studies have shown that within the uppermost 0.67 meters of burial sites, exclusively westward-facing mummies have been uncovered. This shift in burial orientation suggests a significant cultural evolution within the ancient societies that adhered to the practice of mummification.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                    </div>
+                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#model2">View Model 2</a>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervisedheaddirectionscatter.jpg" alt="..." /></div>
+        </div>
+    </div>
+</header>
+
+<div class="bg-light py-5" id="#learn">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervisedheaddirectionbox.jpg" alt="..." /></div>
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <p class="lead fw-normal text-dark-50 mb-4">A notable observation in the burial practices of mummies is that those buried in an eastward-facing position tend to have a considerably higher average age compared to those buried facing other directions. </p>
+                    <ul>
+                        <li>Length has no observable impact on head direction</li>
+                        <li>0.68 Meters in Depth was the last time someone was burried facing east</li>
+                        <li>East average: 1.8 Meters</li>
+                        <li>West average: 1.1 Meters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- About section-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="mb-5">
+                <div class="card h-100 shadow border-0">
+                    <div class="card-body">
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Model 1 Conclusion</div>
+                        <p class="card-text mb-0">
+                            The visualizations reveal two significant observations.
+                            Length does not impact the direction of head placement during burial.
+                            Additionally, there is a clear shift in burial practices.
+                            Mummies with their heads pointing east were not interred below 0.68 depth.
+                            Deeper mummies were exclusively found with their heads facing west, indicating a gradual cultural evolution
+                            towards westward-facing burials. The average depth of mummies facing east is approximately 1.8,
+                            while those facing west have an average depth of approximately 1.1, indicating a notable difference.
+                            This shift in burial practices highlights the changing customs and beliefs of ancient civilizations.
+                            Further research is necessary to fully comprehend its significance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Model 2 -->
+<section id="model2" class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="my-5 text-center text-xl-start">
+                    <h1 class="display-5 fw-bolder text-dark mb-2">Model 2: Color over Time</h1>
+                    <table class="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Legend</th>
+                            </tr>
+                        </thead>
+                        <thead>
+                            <tr>
+                                <th>Color</th>
+                                <th>Textile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="bg-yellow">Yellow Dot</td>
+                                <td>Yellow Textile</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-red">Red Dot</td>
+                                <td>Red Textile</td>
+                            </tr>
+                            <tr>
+                                <td class="bg-purple">Purple Dot</td>
+                                <td>Purple and Red Textile</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="~/lib/unsupervisedcolorscatter2.jpg" alt="..." /></div>
+        </div>
+    </div>
+</section>
+
+<!-- About section-->
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="mb-5">
+                <div class="card h-100 shadow border-0">
+                    <div class="card-body">
+                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">Model 2 Conclusion</div>
+                        <p>
+                            Conclusion: The color of textiles changed over time, from yellow, to red and lastly, red and purple.
+                        </p>
+                        <ul>
+                            <li>Taller mummies tend to be burried with red textile</li>
+                            <li>Oldest to newest colors: Yellow, red, purple</li>
+                        </ul>
+
+                        <p>
+                            Due to a limited number of data points, the current visualization/model may not exhibit the same degree of
+                            robustness as its predecessor. Nevertheless, some noteworthy trends have emerged from the analysis.
+                            Firstly, it was observed that the majority of taller mummies (those with a higher age at death) were interred
+                            with red textiles, with only one out of the seven records, which measured around 2 meters in length,
+                            not displaying this color. Our second observation pertains to color usage over time.
+                            The earliest bodies examined only contained yellow textiles. However, a middle period, approximately 1 meter deep,
+                            exhibited mostly red textiles with some yellow, indicating that red was introduced around 1.2 meters
+                            while purple was introduced at a depth of around 1 meter.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Conclusion section-->
+<div class="py-5 text-center">
+    <div class="container">
+        <div class="row gx-5 justify-content-center">
+            <div>
+                <div class="text-center">
+                    <div class="fs-4 mb-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

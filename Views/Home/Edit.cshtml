@@ -1,13 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Create Record";
-}
+﻿@model INTEX2.Models.MummyData
 
-@model INTEX2.Models.MummyData
+@{
+    ViewData["Title"] = "Edit Record";
+}
 
 <header class="bg-dark py-5">
     <div class="container px-5">
         <div class="row gx-5 align-items-center justify-content-center">
-            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Record Form</h1>
+            <h1 class="display-5 fw-bolder text-white mb-2 text-center">Edit Form</h1>
         </div>
     </div>
 </header>
@@ -16,8 +16,9 @@
     <br />
     <div class="row">
         <div>
-            <form asp-action="Record">
+            <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="PkId" />
                 <div class="form-group">
                     <label asp-for="Id" class="control-label"></label>
                     <input asp-for="Id" class="form-control" />
@@ -90,7 +91,7 @@
                 </div>
                 <div class="form-group">
                     <br />
-                    <input type="submit" value="Add Record" class="btn btn-success" />
+                    <input type="submit" value="Save" class="btn btn-success" />
                 </div>
             </form>
         </div>
@@ -98,12 +99,9 @@
 
     <div>
         <br />
-        <a asp-action="Table" class="btn btn-primary">View Table</a>
-        <br />
-        <br />
-        <a asp-action="Index" class="btn btn-primary">Back to Home</a>
+        <a asp-action="Table" class="btn btn-primary">Return to Table</a>
     </div>
-    
+
 </div>
 
 @section Scripts {
