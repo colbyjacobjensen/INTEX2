@@ -1,14 +1,20 @@
 using INTEX2.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using INTEX2.Areas.Identity.Data;
 using Npgsql;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using INTEX2.Models;
+using Microsoft.ML.OnnxRuntime;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders(); // Remove the default logging provider
+
+builder.Logging.AddConsole(); // Add the console logging provider
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("MummyDBConnection");
@@ -29,11 +35,11 @@ builder.Services.AddRazorPages();
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
-    // This lambda determines whether user consent for non-essential 
-    // cookies is needed for a given request.
-    options.CheckConsentNeeded = context => true;
+	// This lambda determines whether user consent for non-essential 
+	// cookies is needed for a given request.
+	options.CheckConsentNeeded = context => true;
 
-    options.MinimumSameSitePolicy = SameSiteMode.None;
+	options.MinimumSameSitePolicy = SameSiteMode.None;
 });
 
 var app = builder.Build();
@@ -41,13 +47,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseMigrationsEndPoint();
+	app.UseMigrationsEndPoint();
 }
 else
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Home/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
@@ -60,6 +66,13 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+
+//MAY NEED TO UNCOMMENT
+//app.UseEndpoints(endpoints =>
+//{
+	//endpoints.MapControllers();
+//});
 
 app.Use(async (context, next) =>
 {
