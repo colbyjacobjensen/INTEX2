@@ -12,15 +12,101 @@
     </div>
 </header>
 
-<div class="text-center">
-    <h1 class="display-4">Are you sure you want to delete record @Model.Id?</h1>
+<div class="container text-center">
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Depth)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Depth)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.HeadDirection)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.HeadDirection)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Sex)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Sex)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.HairColor)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.HairColor)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.BurialNumber)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.BurialNumber)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.AgeAtDeath)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.AgeAtDeath)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.StructureValue)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.StructureValue)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.ColorValue)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.ColorValue)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.TextileValue)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.TextileValue)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.FieldNotes)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.FieldNotes)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Length)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Length)
+            </dd>
+            <dt class="col-sm-6">
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.Photo)
+            </dd>
+        </dl>
 
-    <!--Delete/Cancel Buttons-->
-    <form method="post" asp-action="Delete">
-        <button type="submit" class="btn btn-primary">Delete</button>
-        <a asp-controller="Home" asp-action="Table" class="btn btn-primary">Cancel</a>
-
-        <!--Hidden MovieID Identifier-->
-        <input type="hidden" asp-for="PkId" />
-    </form>
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="PkId" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Table" class="btn btn-primary">Back to Table</a>
+        </form>
+    </div>
 </div>

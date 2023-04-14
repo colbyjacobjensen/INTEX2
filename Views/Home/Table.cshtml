@@ -17,7 +17,6 @@
         <!--Column Names-->
         <thead class="font-weight-bold">
             <tr>
-                <td>PK</td>
                 <td>ID</td>
                 <td>Location</td>
                 <td>Depth</td>
@@ -30,10 +29,8 @@
                 <td>BurialNumber.</td>
                 <td>StructureValue.</td>
                 <td>TextileValue.</td>
-                <td>Length</td>
-                <td>Photo</td>
-
-                <td>Data Expert Initials</td>
+                @*<td>Length</td>*@
+                @*<td>Photo</td>*@
             </tr>
         </thead>
 
@@ -41,7 +38,6 @@
             @foreach (var x in Model)
                 {
                     <tr>
-                        <td>@x.PkId</td>
                         <td>@x.Id</td>
                         <td>@x.Location</td>
                         <td>@x.Depth</td>
@@ -54,11 +50,11 @@
                         <td>@x.BurialNumber.</td>
                         <td>@x.StructureValue.</td>
                         <td>@x.TextileValue.</td>
-                        <td>@x.Length</td>
-                        <td><img src="@x.Photo" height="30px"/></td>
+                        @*<td>@x.Length</td>*@
+                        @*<td><img src="@x.Photo" height="30px"/></td>*@
 
-                        <td><a asp-controller="Home" asp-action="Edit" asp-route-recordid="@x.PkId">Edit</a></td>
-                        <td><a asp-controller="Home" asp-action="Delete" asp-route-recordid="@x.PkId">Delete</a></td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-recordid="@x.PkId" class="btn btn-primary">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-recordid="@x.PkId" class="btn btn-danger">Delete</a></td>
                     </tr>
                 }
         </tbody>

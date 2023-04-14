@@ -231,7 +231,7 @@ namespace INTEX2.Controllers
 
             var record = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
-            return View("Record", record);
+            return View("Edit", record);
         }
 
         // POST - Edit
@@ -251,7 +251,7 @@ namespace INTEX2.Controllers
 
                 var record = _recordContext.MummyData.Single(data => data.PkId == recordid);
 
-                return View("Record", record);
+                return View("Edit", record);
             }
         }
 
